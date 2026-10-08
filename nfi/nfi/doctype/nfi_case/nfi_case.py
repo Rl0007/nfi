@@ -307,6 +307,7 @@ class NFICase(Document):
 		self.set_documents()
 		self.total_paid = sum(flt(row.amount) for row in self.payments)
 		state = self.workflow_state or "Draft"
+		self.set_review_route(previous_state, state)
 		if state != previous_state:
 			self.validate_transition(previous_state)
 		self.spoc_status = get_spoc_status(state)
@@ -380,6 +381,10 @@ class NFICase(Document):
 		self.save()
 		self.add_comment("Info", _("Director changed from {0} to {1}").format(previous_director, director))
 
+	def set_review_route(self, previous_state: str, state: str):
+		if state != "Draft" and (previous_state == "Draft" or self.has_value_changed("program")):
+			self.review_route = frappe.db.get_value("NFI Program", self.program, "review_route")
+
 	def set_documents(self):
 		if self.program and not self.documents:
 			for row in get_program_documents(self.program):
@@ -442,8 +447,8 @@ class NFICase(Document):
 			uploaded |= {FATHER_AADHAAR, MOTHER_AADHAAR}
 		missing = [
 			row.document_type
-			for row in get_program_documents(self.program, stage)
-			if self.is_required(row.requirement) and row.document_type not in uploaded
+			for row in self.documents
+			if row.stage == stage and row.is_mandatory and row.document_type not in uploaded
 		]
 		if missing:
 			frappe.throw(_("Upload these mandatory {0} documents: {1}").format(_(stage), ", ".join(missing)))
@@ -466,13 +471,10 @@ def get_spoc_status(state: str) -> str:
 	return "Processing" if state in INTERNAL_STATES else state
 
 
-def get_program_documents(program: str, stage: str | None = None) -> list[dict]:
-	filters = {"parenttype": "NFI Program", "parent": program}
-	if stage:
-		filters["stage"] = stage
+def get_program_documents(program: str) -> list[dict]:
 	return frappe.get_all(
 		"NFI Program Document",
-		filters=filters,
+		filters={"parenttype": "NFI Program", "parent": program},
 		fields=["document_type", "stage", "folder", "requirement"],
 		order_by="idx",
 	)
