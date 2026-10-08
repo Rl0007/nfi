@@ -317,7 +317,9 @@ class NFICase(Document):
 		self.set_automatic_state()
 
 	def on_trash(self):
-		if self.case_number and not has_full_access(frappe.session.user):
+		if self.flags.ignore_permissions:
+			return
+		if self.case_number or (self.workflow_state or "Draft") != "Draft":
 			frappe.throw(_("Only Draft cases without a Case Number can be deleted."))
 
 	def is_spoc_only(self) -> bool:
