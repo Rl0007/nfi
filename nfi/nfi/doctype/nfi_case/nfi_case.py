@@ -10,11 +10,12 @@ from frappe.utils import flt, today
 from nfi.install import (
 	APPROVED_AWAITING_DOCUMENTS,
 	BOTH_PARENTS_AADHAAR,
+	DIRECTOR,
 	FATHER_AADHAAR,
 	MOTHER_AADHAAR,
 	SPOC,
 )
-from nfi.permissions import has_full_access, is_hospital_member
+from nfi.permissions import can_change_director, has_full_access, is_hospital_member
 
 REQUIRED_INTAKE_FIELDS = (
 	"case_type",
@@ -349,6 +350,8 @@ class NFICase(Document):
 		if not (self.hospital and self.program):
 			return
 		if not (self.has_value_changed("hospital") or self.has_value_changed("program") or not self.director):
+			if self.has_value_changed("director"):
+				self.validate_director_change()
 			return
 		mapping = frappe.get_all(
 			"NFI Hospital Program",
@@ -361,6 +364,21 @@ class NFICase(Document):
 				_("Program {0} is not enabled for hospital {1}.").format(self.program, self.hospital)
 			)
 		self.director = mapping[0].director
+
+	def validate_director_change(self):
+		if not can_change_director(frappe.session.user):
+			frappe.throw(_("Only the NFI Coordinator or NFI Admin can change the Director."))
+		if DIRECTOR not in frappe.get_roles(self.director):
+			frappe.throw(_("{0} does not have the NFI Director role.").format(self.director))
+
+	@frappe.whitelist()
+	def change_director(self, director: str):
+		previous_director = self.director
+		if director == previous_director:
+			return
+		self.director = director
+		self.save()
+		self.add_comment("Info", _("Director changed from {0} to {1}").format(previous_director, director))
 
 	def set_documents(self):
 		if self.program and not self.documents:

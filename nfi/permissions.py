@@ -4,12 +4,17 @@ from frappe.query_builder import Criterion
 from nfi.install import ACCOUNTANT, ADMIN, COORDINATOR, DIRECTOR, ROLES, SPOC
 
 FULL_ACCESS_ROLES = {COORDINATOR, ACCOUNTANT, ADMIN, "System Manager"}
+DIRECTOR_EDITOR_ROLES = {COORDINATOR, ADMIN, "System Manager"}
 HIDDEN_FROM_DIRECTOR_STATES = ("Draft", "Information needed")
 HOSPITAL_MEMBER_TABLES = {SPOC: ("NFI Hospital SPOC", "user"), DIRECTOR: ("NFI Hospital Program", "director")}
 
 
 def has_full_access(user: str) -> bool:
 	return user == "Administrator" or bool(FULL_ACCESS_ROLES & set(frappe.get_roles(user)))
+
+
+def can_change_director(user: str) -> bool:
+	return user == "Administrator" or bool(DIRECTOR_EDITOR_ROLES & set(frappe.get_roles(user)))
 
 
 def has_app_permission() -> bool:
