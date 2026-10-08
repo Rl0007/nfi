@@ -1,6 +1,8 @@
 import frappe
+from frappe.core.doctype.user.user import user_query
 from frappe.query_builder.functions import Max
 from frappe.utils import cint, flt
+from frappe.utils.user import get_users_with_role
 
 from nfi.install import ACCOUNTANT, ADMIN, APPROVED_AWAITING_DOCUMENTS, COORDINATOR
 
@@ -174,3 +176,10 @@ def add_stage_since(rows: list[dict]) -> None:
 	)
 	for row in rows:
 		row.stage_since = stage_since.get(row.name) or row.modified
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_users_by_role(doctype: str, txt: str, searchfield: str, start: int, page_len: int, filters: dict):
+	filters = {"name": ["in", get_users_with_role(filters.get("role"))]}
+	return user_query(doctype, txt, searchfield, start, page_len, filters)

@@ -19,6 +19,8 @@ const TOPUP_ELIGIBLE_STATES = [
 	"Closed",
 ];
 
+const DIRECTOR_EDITOR_ROLES = ["NFI Coordinator", "NFI Admin", "System Manager"];
+
 frappe.ui.form.on("NFI Case", {
 	setup(frm) {
 		frm.set_query("hospital", () => {
@@ -45,6 +47,9 @@ frappe.ui.form.on("NFI Case", {
 				: "",
 			"orange"
 		);
+		if (!frm.is_new() && frappe.user.has_role(DIRECTOR_EDITOR_ROLES)) {
+			frm.add_custom_button(__("Change Director"), () => change_director(frm));
+		}
 		await set_hospital_programs(frm);
 	},
 
@@ -102,7 +107,8 @@ frappe.ui.form.on("NFI Case", {
 
 async function set_hospital_programs(frm) {
 	frm.hospital_programs = [];
-	if (!frm.doc.hospital) return;
+	// a reassigned director may not be able to read the hospital
+	if (!frm.doc.hospital || !frappe.user.has_role(["NFI SPOC", ...nfi.INTERNAL_ROLES])) return;
 	const hospital = await frappe.db.get_doc("NFI Hospital", frm.doc.hospital);
 	frm.hospital_programs = hospital.programs.map((row) => row.program);
 }
@@ -112,4 +118,31 @@ function is_required(frm, requirement) {
 		(requirement === "Mandatory when Out-born" && frm.doc.birth_status === "Out-born")
 		? 1
 		: 0;
+}
+
+function change_director(frm) {
+	const dialog = new frappe.ui.Dialog({
+		title: __("Change Director"),
+		fields: [
+			{
+				fieldname: "director",
+				fieldtype: "Link",
+				options: "User",
+				label: __("Director"),
+				reqd: 1,
+				default: frm.doc.director,
+				get_query: () => ({
+					query: "nfi.api.get_users_by_role",
+					filters: { role: "NFI Director" },
+				}),
+			},
+		],
+		primary_action_label: __("Change"),
+		primary_action: async ({ director }) => {
+			await frm.call("change_director", { director });
+			dialog.hide();
+			await frm.reload_doc();
+		},
+	});
+	dialog.show();
 }

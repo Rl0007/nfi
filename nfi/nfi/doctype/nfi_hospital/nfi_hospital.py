@@ -1,8 +1,11 @@
 # Copyright (c) 2026, Rahul Agrawal and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
+from frappe import _
 from frappe.model.document import Document
+
+from nfi.install import DIRECTOR, SPOC
 
 
 class NFIHospital(Document):
@@ -27,3 +30,10 @@ class NFIHospital(Document):
 	# end: auto-generated types
 
 	_DOCTYPE_NAME = "NFI Hospital"
+
+	def validate(self):
+		for table_field, user_field, role in (("spocs", "user", SPOC), ("programs", "director", DIRECTOR)):
+			for row in self.get(table_field):
+				user = row.get(user_field)
+				if user and role not in frappe.get_roles(user):
+					frappe.throw(_("Row {0}: {1} does not have the {2} role.").format(row.idx, user, role))
