@@ -109,9 +109,15 @@ TRANSITIONS = [
 		"Approve",
 		APPROVED_AWAITING_DOCUMENTS,
 		COORDINATOR,
-		"doc.director_decision == 'Approved'",
+		"doc.director_decision == 'Approved' and not doc.final_documents_received_date",
 	),
-	("Coordinator Review", "Reject", "Rejected", COORDINATOR, None),
+	(
+		"Coordinator Review",
+		"Reject",
+		"Rejected",
+		COORDINATOR,
+		"not doc.final_documents_received_date",
+	),
 	(
 		"Coordinator Review",
 		"Send to Accountant",
