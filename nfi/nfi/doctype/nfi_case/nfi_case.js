@@ -52,7 +52,9 @@ frappe.ui.form.on("NFI Case", {
 		if (!frm.doc.program) return;
 		const program = await frappe.db.get_doc("NFI Program", frm.doc.program);
 		const files = Object.fromEntries(
-			(frm.doc.documents || []).filter((row) => row.file).map((row) => [row.document_type, row.file]),
+			(frm.doc.documents || [])
+				.filter((row) => row.file)
+				.map((row) => [row.document_type, row.file])
 		);
 		frm.clear_table("documents");
 		for (const row of program.documents) {
@@ -81,7 +83,11 @@ frappe.ui.form.on("NFI Case", {
 
 	async original_case(frm) {
 		if (!frm.doc.original_case) return;
-		const { message } = await frappe.db.get_value("NFI Case", frm.doc.original_case, TOPUP_COPY_FIELDS);
+		const { message } = await frappe.db.get_value(
+			"NFI Case",
+			frm.doc.original_case,
+			TOPUP_COPY_FIELDS
+		);
 		await frm.set_value(message);
 		frm.trigger("mother_name");
 	},
@@ -95,8 +101,8 @@ async function set_hospital_programs(frm) {
 }
 
 function is_required(frm, requirement) {
-	return (
-		requirement === "Mandatory" ||
+	return requirement === "Mandatory" ||
 		(requirement === "Mandatory when Out-born" && frm.doc.birth_status === "Out-born")
-	) ? 1 : 0;
+		? 1
+		: 0;
 }
