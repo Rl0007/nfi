@@ -39,7 +39,7 @@ add_to_apps_screen = [
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/nfi/css/nfi.css"
-# app_include_js = "/assets/nfi/js/nfi.js"
+app_include_js = "nfi.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/nfi/css/nfi.css"
@@ -76,6 +76,8 @@ add_to_apps_screen = [
 # role_home_page = {
 # 	"Role": "home_page"
 # }
+
+boot_session = "nfi.boot.set_home_page"
 
 # Setup Wizard
 # ------------
