@@ -13,7 +13,16 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    name: Server
+    name: ${{ matrix.name }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Server
+            frappe-branch: develop
+          - name: Server (v16)
+            frappe-branch: version-16
 
     services:
       redis-cache:
@@ -51,9 +60,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+          key: ${{ runner.os }}-pip-${{ matrix.frappe-branch }}-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-${{ matrix.frappe-branch }}-
 
       - name: Install MariaDB Client
         run: |
@@ -63,7 +72,7 @@ jobs:
       - name: Setup
         run: |
           pip install frappe-bench
-          bench init --skip-redis-config-generation --skip-assets --python "$(which python)" ~/frappe-bench
+          bench init --skip-redis-config-generation --skip-assets --frappe-branch ${{ matrix.frappe-branch }} --python "$(which python)" ~/frappe-bench
 
       - name: Install
         working-directory: /home/runner/frappe-bench
@@ -75,6 +84,12 @@ jobs:
           bench build --app nfi
         env:
           CI: 'Yes'
+
+      - name: Run tests
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench --site test_site set-config allow_tests true
+          bench --site test_site run-tests --app nfi
 
       - name: Run the full case flow on demo data
         working-directory: /home/runner/frappe-bench
