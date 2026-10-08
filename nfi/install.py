@@ -251,6 +251,7 @@ def add_workflow():
 			"document_type": "NFI Case",
 			"workflow_state_field": "workflow_state",
 			"is_active": 1,
+			"override_status": 1,
 			"send_email_alert": 0,
 			"states": [],
 			"transitions": [],

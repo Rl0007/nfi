@@ -18,15 +18,11 @@ const TOPUP_ELIGIBLE_STATES = [
 	"Paid",
 	"Closed",
 ];
-const INTERNAL_ROLES = ["NFI Coordinator", "NFI Accountant", "NFI Admin", "System Manager"];
 
 frappe.ui.form.on("NFI Case", {
 	setup(frm) {
 		frm.set_query("hospital", () => {
-			const is_spoc_only =
-				frappe.user.has_role("NFI SPOC") &&
-				!INTERNAL_ROLES.some((role) => frappe.user.has_role(role));
-			if (!is_spoc_only) return {};
+			if (!nfi.is_spoc_only()) return {};
 			return { filters: [["NFI Hospital SPOC", "user", "=", frappe.session.user]] };
 		});
 		frm.set_query("program", () => ({
