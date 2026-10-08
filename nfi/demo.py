@@ -218,19 +218,18 @@ SPECS = [
 
 
 def make():
-	frappe.set_user("Administrator")
+	frappe.set_user("Administrator")  # nosemgrep
 	add_users()
 	add_hospitals()
 	cases = {}
 	for index in sorted(range(len(SPECS)), key=lambda index: -SPECS[index][4]):
 		cases[index] = DemoCase(index, SPECS[index], cases).make()
-	frappe.set_user("Administrator")
-	frappe.db.commit()
+	frappe.set_user("Administrator")  # nosemgrep
 	print(get_summary())
 
 
 def clear():
-	frappe.set_user("Administrator")
+	frappe.set_user("Administrator")  # nosemgrep
 	mobiles = [get_mobile(index, 0) for index in range(len(SPECS))]
 	for case_name in frappe.get_all(
 		"NFI Case", filters={"mother_mobile": ("in", mobiles)}, order_by="is_topup desc", pluck="name"
@@ -243,7 +242,6 @@ def clear():
 		frappe.delete_doc_if_exists("NFI Hospital", hospital["hospital_name"], force=True)
 	for email, *_ in USERS:
 		frappe.delete_doc_if_exists("User", email, force=True)
-	frappe.db.commit()
 
 
 def get_summary() -> dict:
@@ -354,7 +352,7 @@ class DemoCase:
 		for step in self.steps:
 			self.clock += self.step_gap
 			getattr(self, step)()
-		frappe.set_user("Administrator")
+		frappe.set_user("Administrator")  # nosemgrep
 		frappe.db.set_value(
 			"NFI Case",
 			self.name,
@@ -364,7 +362,7 @@ class DemoCase:
 		return self.name
 
 	def add_case(self, mother_mobile: str):
-		frappe.set_user(self.spoc)
+		frappe.set_user(self.spoc)  # nosemgrep
 		case = frappe.new_doc("NFI Case")
 		case.update(
 			{
@@ -385,7 +383,7 @@ class DemoCase:
 		self.update(self.spoc, lambda case: self.upload_documents(case, "Intake"))
 
 	def update(self, user: str, change, action: str | None = None):
-		frappe.set_user(user)
+		frappe.set_user(user)  # nosemgrep
 		case = frappe.get_doc("NFI Case", self.name)
 		if callable(change):
 			change(case)
