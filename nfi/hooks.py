@@ -309,10 +309,12 @@ after_migrate = "nfi.install.after_migrate"
 
 permission_query_conditions = {
 	"NFI Case": "nfi.permissions.get_case_query_conditions",
+	"NFI Hospital": "nfi.permissions.get_hospital_query_conditions",
 }
 
 has_permission = {
 	"NFI Case": "nfi.permissions.has_case_permission",
+	"NFI Hospital": "nfi.permissions.has_hospital_permission",
 }
 
 doc_events = {

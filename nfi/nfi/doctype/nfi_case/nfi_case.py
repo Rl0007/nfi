@@ -14,7 +14,7 @@ from nfi.install import (
 	MOTHER_AADHAAR,
 	SPOC,
 )
-from nfi.permissions import has_full_access, is_hospital_spoc
+from nfi.permissions import has_full_access, is_hospital_member
 
 REQUIRED_INTAKE_FIELDS = (
 	"case_type",
@@ -342,7 +342,7 @@ class NFICase(Document):
 
 	def set_hospital_program(self):
 		if self.hospital and self.is_spoc_only() and self.has_value_changed("hospital"):
-			if not is_hospital_spoc(self.hospital, frappe.session.user):
+			if not is_hospital_member(self.hospital, frappe.session.user):
 				frappe.throw(_("You are not a SPOC of hospital {0}.").format(self.hospital))
 		if not (self.hospital and self.program):
 			return
