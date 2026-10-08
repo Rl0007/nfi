@@ -23,6 +23,10 @@ def has_app_permission() -> bool:
 	)
 
 
+def get_condition_sql(condition: Criterion) -> str:
+	return condition.get_sql(quote_char="`", with_namespace=True, subcriterion=True)
+
+
 def get_member_hospitals_query(user: str, role: str = SPOC):
 	child_doctype, user_field = HOSPITAL_MEMBER_TABLES[role]
 	member = frappe.qb.DocType(child_doctype)
@@ -40,7 +44,7 @@ def is_hospital_member(hospital: str, user: str, role: str = SPOC) -> bool:
 	)
 
 
-def get_hospital_query_conditions(user: str | None = None, doctype: str | None = None):
+def get_hospital_query_conditions(user: str | None = None, doctype: str | None = None) -> str:
 	user = user or frappe.session.user
 	if has_full_access(user):
 		return ""
@@ -51,9 +55,7 @@ def get_hospital_query_conditions(user: str | None = None, doctype: str | None =
 		for role in HOSPITAL_MEMBER_TABLES
 		if role in frappe.get_roles(user)
 	]
-	if not conditions:
-		return hospital.name.isnull()
-	return Criterion.any(conditions)
+	return get_condition_sql(Criterion.any(conditions) if conditions else hospital.name.isnull())
 
 
 def has_hospital_permission(doc, ptype: str | None = None, user: str | None = None) -> bool:
@@ -67,7 +69,7 @@ def has_hospital_permission(doc, ptype: str | None = None, user: str | None = No
 	)
 
 
-def get_case_query_conditions(user: str | None = None, doctype: str | None = None):
+def get_case_query_conditions(user: str | None = None, doctype: str | None = None) -> str:
 	user = user or frappe.session.user
 	if has_full_access(user):
 		return ""
@@ -80,9 +82,7 @@ def get_case_query_conditions(user: str | None = None, doctype: str | None = Non
 		conditions.append(case.hospital.isnull() & (case.owner == user))
 	if DIRECTOR in roles:
 		conditions.append((case.director == user) & case.workflow_state.notin(HIDDEN_FROM_DIRECTOR_STATES))
-	if not conditions:
-		return case.name.isnull()
-	return Criterion.any(conditions)
+	return get_condition_sql(Criterion.any(conditions) if conditions else case.name.isnull())
 
 
 def has_case_permission(doc, ptype: str | None = None, user: str | None = None) -> bool:
