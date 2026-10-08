@@ -381,8 +381,12 @@ class NFICase(Document):
 
 		state = self.workflow_state
 		returned_by_accountant = previous_state == "Accountant Review" and state == "Coordinator Review"
-		if (state == "Information needed" or returned_by_accountant) and not self.return_reason:
+		is_return = state == "Information needed" or returned_by_accountant
+		if is_return and not self.return_reason:
 			frappe.throw(_("Enter a Return Reason before returning the case."))
+		if not is_return:
+			# so the next return cannot reuse a reason written for an earlier one
+			self.return_reason = None
 		if state == "Rejected" and not self.rejection_reason:
 			frappe.throw(_("Enter a Rejection Reason before rejecting the case."))
 		if state == "Director Review" and not self.director:
