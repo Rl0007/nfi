@@ -32,6 +32,7 @@ PAYMENT_STATES = ("Accountant Review", "Payment Processed", "Partially Paid", "P
 PIPELINE_CARDS_PER_STAGE = 50
 CASE_FIELDS = [
 	"name",
+	"title",
 	"case_number",
 	"baby_name",
 	"mother_name",
