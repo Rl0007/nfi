@@ -286,6 +286,7 @@ class NFICase(Document):
 		social_status: DF.Literal["", "Pending", "Query Raised", "Approved", "Rejected"]
 		spoc_status: DF.Data | None
 		srt_vials: DF.Int
+		title: DF.Data | None
 		total_paid: DF.Currency
 		video_testimonial_status: DF.Literal["", "Pending", "Requested", "Received", "Declined"]
 		workflow_state: DF.Link | None
@@ -308,6 +309,7 @@ class NFICase(Document):
 		if state != previous_state:
 			self.validate_transition(previous_state)
 		self.spoc_status = get_spoc_status(state)
+		self.title = get_case_title(self.case_number, self.baby_name)
 
 	def on_update(self):
 		if self.flags.mark_original_topup:
@@ -434,6 +436,10 @@ class NFICase(Document):
 			state = "Paid" if self.total_paid >= flt(self.final_sponsor_amount) else "Partially Paid"
 		if state != self.workflow_state:
 			self.db_set({"workflow_state": state, "spoc_status": get_spoc_status(state)})
+
+
+def get_case_title(case_number: str | None, baby_name: str | None) -> str | None:
+	return " – ".join(part for part in (case_number, baby_name) if part) or None  # noqa: RUF001
 
 
 def get_spoc_status(state: str) -> str:

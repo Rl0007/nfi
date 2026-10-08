@@ -1,7 +1,7 @@
 import frappe
 from frappe.query_builder import Criterion
 
-from nfi.install import ACCOUNTANT, ADMIN, COORDINATOR, DIRECTOR, SPOC
+from nfi.install import ACCOUNTANT, ADMIN, COORDINATOR, DIRECTOR, ROLES, SPOC
 
 FULL_ACCESS_ROLES = {COORDINATOR, ACCOUNTANT, ADMIN, "System Manager"}
 HIDDEN_FROM_DIRECTOR_STATES = ("Draft", "Information needed")
@@ -9,6 +9,12 @@ HIDDEN_FROM_DIRECTOR_STATES = ("Draft", "Information needed")
 
 def has_full_access(user: str) -> bool:
 	return user == "Administrator" or bool(FULL_ACCESS_ROLES & set(frappe.get_roles(user)))
+
+
+def has_app_permission() -> bool:
+	return frappe.session.user == "Administrator" or bool(
+		{*ROLES, "System Manager"} & set(frappe.get_roles())
+	)
 
 
 def get_spoc_hospitals_query(user: str):

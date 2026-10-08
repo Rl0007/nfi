@@ -17,6 +17,7 @@
   "column_break_intake_status",
   "workflow_state",
   "spoc_status",
+  "title",
   "hospital",
   "program",
   "review_route",
@@ -244,7 +245,6 @@
    "bold": 1,
    "fieldname": "case_number",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Case Number",
    "no_copy": 1,
@@ -268,6 +268,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.case_type=='Top-up'",
    "fieldname": "is_topup",
    "fieldtype": "Check",
    "label": "Is Top-up",
@@ -275,6 +276,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.has_topup",
    "fieldname": "has_topup",
    "fieldtype": "Check",
    "label": "Has Top-up",
@@ -300,6 +302,14 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Case",
    "no_copy": 1,
    "read_only": 1
   },
@@ -342,7 +352,8 @@
   {
    "fieldname": "mother_name",
    "fieldtype": "Data",
-   "label": "Mother Name"
+   "label": "Mother Name",
+   "read_only_depends_on": "eval:doc.case_number && nfi.is_spoc_only()"
   },
   {
    "fieldname": "mother_mobile",
@@ -356,7 +367,8 @@
   {
    "fieldname": "father_name",
    "fieldtype": "Data",
-   "label": "Father Name"
+   "label": "Father Name",
+   "read_only_depends_on": "eval:doc.case_number && nfi.is_spoc_only()"
   },
   {
    "fieldname": "father_mobile",
@@ -371,7 +383,6 @@
   {
    "fieldname": "baby_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Baby Name",
    "read_only": 1
   },
@@ -1818,6 +1829,6 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "baby_name",
+ "title_field": "title",
  "track_changes": 1
 }

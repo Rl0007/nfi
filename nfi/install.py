@@ -7,9 +7,17 @@ DIRECTOR = "NFI Director"
 ACCOUNTANT = "NFI Accountant"
 ADMIN = "NFI Admin"
 ROLES = (SPOC, COORDINATOR, DIRECTOR, ACCOUNTANT, ADMIN)
+ROLE_HOME_PAGES = {
+	SPOC: "desk/nfi-spoc",
+	COORDINATOR: "desk/nfi-coordinator",
+	DIRECTOR: "desk/nfi-director",
+	ACCOUNTANT: "desk/nfi-accountant",
+	ADMIN: "desk/nfi-management",
+}
 
 APPROVED_AWAITING_DOCUMENTS = "Approved – Awaiting Final Discharge Documents"  # noqa: RUF001
 WORKFLOW_NAME = "NFI Case Workflow"
+INDIAN_NUMBER_FORMAT = "#,##,###.##"
 
 STATE_EDITORS = {
 	"Draft": [SPOC, COORDINATOR],
@@ -188,6 +196,7 @@ def after_install():
 	add_programs()
 	add_print_format_permission()
 	set_default_currency()
+	set_indian_number_format()
 
 
 def after_migrate():
@@ -201,6 +210,10 @@ def add_roles():
 	for role_name in ROLES:
 		if not frappe.db.exists("Role", role_name):
 			frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert()
+		role = frappe.get_doc("Role", role_name)
+		if not role.home_page:
+			role.home_page = ROLE_HOME_PAGES[role_name]
+			role.save()
 
 
 def add_print_format_permission():
@@ -214,6 +227,16 @@ def set_default_currency():
 	if not frappe.db.get_default("currency"):
 		frappe.db.set_single_value("System Settings", "currency", "INR")
 		frappe.db.set_default("currency", "INR")
+
+
+def set_indian_number_format():
+	stock_formats = (None, "", "#,###.##")
+	if (
+		frappe.db.get_default("currency") == "INR"
+		and frappe.db.get_single_value("System Settings", "number_format") in stock_formats
+	):
+		frappe.db.set_single_value("System Settings", "number_format", INDIAN_NUMBER_FORMAT)
+		frappe.db.set_default("number_format", INDIAN_NUMBER_FORMAT)
 
 
 def add_workflow():
@@ -240,6 +263,7 @@ def add_workflow():
 			"document_type": "NFI Case",
 			"workflow_state_field": "workflow_state",
 			"is_active": 1,
+			"override_status": 1,
 			"send_email_alert": 0,
 			"states": [],
 			"transitions": [],
