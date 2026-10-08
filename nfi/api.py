@@ -2,7 +2,7 @@ import frappe
 from frappe.query_builder.functions import Max
 from frappe.utils import cint, flt
 
-from nfi.install import APPROVED_AWAITING_DOCUMENTS
+from nfi.install import ACCOUNTANT, ADMIN, APPROVED_AWAITING_DOCUMENTS, COORDINATOR
 
 COORDINATOR_QUEUE_STATES = (
 	"Coordinator Verification",
@@ -47,6 +47,7 @@ def get_case_queue(
 	start: int = 0,
 	page_length: int = 20,
 ) -> dict:
+	frappe.only_for((COORDINATOR, ADMIN))
 	query = get_case_query(COORDINATOR_QUEUE_STATES, hospital, program, search)
 	rows = frappe.get_list(
 		**query,
@@ -63,6 +64,7 @@ def get_case_queue(
 def get_case_pipeline(
 	hospital: str | None = None, program: str | None = None, search: str | None = None
 ) -> list[dict]:
+	frappe.only_for((COORDINATOR, ADMIN))
 	query = get_case_query(PIPELINE_STATES, hospital, program, search)
 	counts = {
 		row.workflow_state: row.total
@@ -97,6 +99,7 @@ def get_payment_list(
 	start: int = 0,
 	page_length: int = 20,
 ) -> dict:
+	frappe.only_for((ACCOUNTANT, ADMIN))
 	if state and state not in PAYMENT_STATES:
 		frappe.throw(frappe._("Unknown payment status {0}").format(state))
 	query = get_case_query(PAYMENT_STATES, hospital, program, search)
