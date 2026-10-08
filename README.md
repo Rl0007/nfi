@@ -39,23 +39,21 @@ NFI lets a newborn-care foundation take sponsorship requests from partner hospit
 - Top-up cases linked to the original case
 - A workspace per role, a coordinator Case Desk, a Payments page, print formats and register reports
 
-### How it works
+### Screenshots
 
-```mermaid
-sequenceDiagram
-    participant H as Hospital
-    participant N as NFI
-    participant D as Director
+**Coordinator workspace**: what needs attention, at a glance
 
-    H->>N: Submit a case with documents
-    N->>N: Verify, call the family, run the reviews
-    N->>D: Send the case with a recommended amount
-    D-->>N: Approve or reject
-    N-->>H: Approval or rejection email
-    Note over H: Baby is discharged
-    H->>N: Upload the final documents
-    N-->>H: Payment recorded
-```
+![Coordinator workspace](.github/screenshots/coordinator-workspace.jpg)
+
+**Case Desk**: the coordinator's work queue and the pipeline of every case by stage
+
+![Case Desk work queue](.github/screenshots/case-desk-queue.jpg)
+
+![Case Desk pipeline](.github/screenshots/case-desk-pipeline.jpg)
+
+**Payments**: the accountant's view of what is approved, paid and still due
+
+![Payments](.github/screenshots/payments.jpg)
 
 ### Installation
 
@@ -79,13 +77,29 @@ bench --site your.site execute nfi.demo.make   # demo hospitals, cases and one u
 bench --site your.site execute nfi.demo.clear
 ```
 
+### How it works
+
+```mermaid
+sequenceDiagram
+    participant H as Hospital
+    participant N as NFI
+    participant D as Director
+
+    H->>N: Submit a case with documents
+    N->>N: Verify, call the family, run the reviews
+    N->>D: Send the case with a recommended amount
+    D-->>N: Approve or reject
+    N-->>H: Approval or rejection email
+    Note over H: Baby is discharged
+    H->>N: Upload the final documents
+    N-->>H: Payment recorded
+```
+
 ### Support
 
 Found a bug or have a question? [Open an issue](https://github.com/Rl0007/nfi/issues).
 
-## Built by Rahul Agrawal
-
-NFI is built and maintained by [Rahul Agrawal](https://agrawalrahul.in).
+## Built with ♥️ by [Rahul](https://agrawalrahul.in)
 
 #### License
 
