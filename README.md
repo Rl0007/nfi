@@ -99,8 +99,8 @@ sequenceDiagram
 
 Found a bug or have a question? [Open an issue](https://github.com/Rl0007/nfi/issues).
 
-## Built with ♥️ by [Rahul](https://agrawalrahul.in)
-
 #### License
 
 MIT
+
+<p align="center">Built with ♥️ by <a href="https://agrawalrahul.in">Rahul</a></p>
