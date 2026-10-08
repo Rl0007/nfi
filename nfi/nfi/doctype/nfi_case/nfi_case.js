@@ -35,6 +35,16 @@ frappe.ui.form.on("NFI Case", {
 
 	async refresh(frm) {
 		frm.set_df_property("original_case", "filter_description", __("Approved cases only"));
+		const needs_information =
+			frm.doc.workflow_state === "Information needed" && frm.doc.return_reason;
+		frm.set_intro(
+			needs_information
+				? __("NFI needs more information: {0}", [
+						frappe.utils.escape_html(frm.doc.return_reason),
+				  ])
+				: "",
+			"orange"
+		);
 		await set_hospital_programs(frm);
 	},
 
