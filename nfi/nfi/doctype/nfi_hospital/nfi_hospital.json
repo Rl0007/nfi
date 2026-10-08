@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:hospital_name",
+ "creation": "2026-10-07 23:51:46.811127",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "hospital_name",
+  "city",
+  "nicu_beds",
+  "column_break_main",
+  "mou_expiry_date",
+  "mou_file",
+  "section_spocs",
+  "spocs",
+  "section_programs",
+  "programs"
+ ],
+ "fields": [
+  {
+   "fieldname": "hospital_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hospital Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "City"
+  },
+  {
+   "fieldname": "nicu_beds",
+   "fieldtype": "Int",
+   "label": "NICU Beds"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mou_expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "MOU Expiry Date"
+  },
+  {
+   "fieldname": "mou_file",
+   "fieldtype": "Attach",
+   "label": "MOU File"
+  },
+  {
+   "fieldname": "section_spocs",
+   "fieldtype": "Section Break",
+   "label": "SPOCs"
+  },
+  {
+   "fieldname": "spocs",
+   "fieldtype": "Table",
+   "label": "SPOCs",
+   "options": "NFI Hospital SPOC"
+  },
+  {
+   "fieldname": "section_programs",
+   "fieldtype": "Section Break",
+   "label": "Programs"
+  },
+  {
+   "fieldname": "programs",
+   "fieldtype": "Table",
+   "label": "Programs",
+   "options": "NFI Hospital Program"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-07 23:51:46.811127",
+ "modified_by": "Administrator",
+ "module": "NFI",
+ "name": "NFI Hospital",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI SPOC",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Coordinator",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Director",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Accountant",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

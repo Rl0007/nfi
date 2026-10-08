@@ -1,0 +1,86 @@
+{% macro style() -%}
+<style>
+	.nfi-print { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 10pt; color: #1f2933; line-height: 1.3; }
+	.nfi-print .nfi-header { display: table; width: 100%; border-bottom: 2px solid #1f4e79; padding-bottom: 6px; margin-bottom: 12px; }
+	.nfi-print .nfi-header > div { display: table-cell; vertical-align: bottom; }
+	.nfi-print .nfi-org { font-size: 9pt; color: #52606d; text-transform: uppercase; letter-spacing: 0.06em; }
+	.nfi-print h1 { font-size: 16pt; margin: 2px 0 0; color: #1f4e79; font-weight: 600; }
+	.nfi-print .nfi-case-number { text-align: right; font-size: 11pt; font-weight: 600; }
+	.nfi-print .nfi-section { page-break-inside: avoid; }
+	.nfi-print h2 { font-size: 11.5pt; color: #1f4e79; margin: 14px 0 4px; padding-bottom: 2px; border-bottom: 1px solid #cbd2d9; page-break-after: avoid; }
+	.nfi-print table { width: 100%; border-collapse: collapse; margin-bottom: 4px; }
+	.nfi-print tr { page-break-inside: avoid; }
+	.nfi-print th, .nfi-print td { text-align: left; vertical-align: top; padding: 2px 6px !important; border-bottom: 1px solid #e4e7eb; }
+	.nfi-print .nfi-fields th { width: 36%; font-weight: 500; color: #52606d; }
+	.nfi-print .nfi-grid thead th { background: #f0f4f8; color: #1f4e79; font-weight: 600; border-bottom: 1px solid #9fb3c8; }
+	.nfi-print .nfi-grid tbody th { font-weight: 500; color: #52606d; width: 36%; }
+	.nfi-print .nfi-received { color: #2f7d32; font-weight: 600; }
+	.nfi-print .nfi-missing { color: #b42318; }
+	.nfi-print .nfi-note { white-space: pre-line; }
+</style>
+{%- endmacro %}
+
+{% macro header(title, doc) -%}
+<div class="nfi-header">
+	<div>
+		<div class="nfi-org">{{ _("Neonates Foundation of India") }}</div>
+		<h1>{{ title }}</h1>
+	</div>
+	<div class="nfi-case-number">{{ doc.case_number or doc.name }}<br><small>{{ doc.program or "" }}</small></div>
+</div>
+{%- endmacro %}
+
+{% macro row(label, value) -%}
+<tr><th>{{ _(label) }}</th><td class="nfi-note">{{ (value or "—") | e }}</td></tr>
+{%- endmacro %}
+
+{% macro join_values(values, separator=", ") -%}
+{{ values | select | join(separator) }}
+{%- endmacro %}
+
+{% macro flag(value) -%}
+{{ {"checked": _("Yes"), "unchecked": _("No"), "unclear": _("Unclear"), "not present": _("Not present")}.get(value, value or "") }}
+{%- endmacro %}
+
+{% macro money(amount) -%}
+{% if amount %}{{ frappe.utils.fmt_money(amount, currency="INR") }}{% endif %}
+{%- endmacro %}
+
+{% macro checked_labels(doc, fieldnames) -%}
+{%- set state = namespace(labels=[]) -%}
+{%- for fieldname in fieldnames if doc.get(fieldname) == "checked" -%}
+{%- set state.labels = state.labels + [doc.meta.get_label(fieldname).split(" - ")[-1]] -%}
+{%- endfor -%}
+{{ state.labels | join(", ") }}
+{%- endmacro %}
+
+{% macro pregnancy_history(doc) -%}
+{%- if doc.interim_gravida -%}
+G{{ doc.interim_gravida }} P{{ doc.interim_para or 0 }} A{{ doc.interim_abortions or 0 }} L{{ doc.interim_living_children or 0 }}
+{%- else -%}{{ doc.fa_gravida or "" }}{%- endif -%}
+{%- endmacro %}
+
+{% macro conception(doc) -%}
+{{ doc.fa_type_of_conception or checked_labels(doc, ["interim_natural_conception", "interim_iui", "interim_ivf"]) }}
+{%- endmacro %}
+
+{% set diagnosis_fields = [
+	"interim_diagnosis_prematurity",
+	"interim_diagnosis_low_birth_weight",
+	"interim_diagnosis_respiratory_distress_syndrome",
+	"interim_diagnosis_transient_tachypnea_of_the_newborn",
+	"interim_diagnosis_sepsis",
+	"interim_diagnosis_hypoglycemia",
+	"interim_diagnosis_necrotizing_enterocolitis",
+	"interim_diagnosis_feeding_intolerance",
+	"interim_diagnosis_patent_ductus_arteriosus",
+	"interim_diagnosis_neonatal_hyperbilirubinemia",
+] %}
+
+{% macro diagnoses(doc) -%}
+{{ join_values([checked_labels(doc, diagnosis_fields), doc.interim_diagnosis_others]) }}
+{%- endmacro %}
+
+{% macro birth_weight(doc) -%}
+{{ (doc.interim_birth_weight_grams ~ " g") if doc.interim_birth_weight_grams else (doc.fa_birth_weight or "") }}
+{%- endmacro %}

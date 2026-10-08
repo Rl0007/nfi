@@ -1,0 +1,35 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
+  "modified": "2026-10-08 00:03:19.365632",
+  "name": "NFI Hospital Approval",
+  "reference_doctype": "NFI Case",
+  "response": null,
+  "response_html": "<p>Dear {{ hospital }} Team,</p>\n<p>Greetings from Neonates Foundation of India.</p>\n<p>We appreciate your team's efforts throughout the process. NFI will sponsor Rs. {{ frappe.utils.fmt_money(director_approved_amount, 0) }} ({{ frappe.utils.money_in_words(director_approved_amount, 'INR') }}) for {{ baby_name }}.</p>\n<p>To facilitate disbursement, please submit the following original documents at discharge:</p>\n<ol>\n\t<li>Final discharge summary.</li>\n\t<li>Final bills mentioning hospital discount and NFI Sponsor Fund.</li>\n\t<li>Additional treatment bills or receipts.</li>\n\t<li>Informed consent form for post-discharge video and pictures.</li>\n\t<li>Payment requisition letter.</li>\n</ol>\n<p>Upon receipt of these documents, we will process the payout. Please contact us for any clarification.</p>\n<p>Warm regards<br>NFI Coordinator<br>Neonates Foundation of India</p>\n",
+  "subject": "{{ case_number }} Sponsor approval notification – {{ baby_name }}",
+  "use_html": 1
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
+  "modified": "2026-10-08 00:03:19.642147",
+  "name": "NFI SRT Approval",
+  "reference_doctype": "NFI Case",
+  "response": null,
+  "response_html": "<p>Dear {{ hospital }} Team,</p>\n<p>Greetings from Neonates Foundation of India.</p>\n<p>NFI will sponsor Rs. {{ frappe.utils.fmt_money(director_approved_amount, 0) }} ({{ frappe.utils.money_in_words(director_approved_amount, 'INR') }}) for {{ srt_vials }} vial{{ \"s\" if srt_vials != 1 else \"\" }} of surfactant for {{ baby_name }}.</p>\n<p>To facilitate disbursement, please submit the following original documents at discharge:</p>\n<ol>\n\t<li>Final discharge summary with the sticker of the vial used.</li>\n\t<li>Final bill with the surfactant bill attached.</li>\n\t<li>Final bills mentioning NFI Sponsor Fund.</li>\n\t<li>Payment requisition letter.</li>\n</ol>\n<p>Upon receipt of these documents, we will process the payout. Please contact us for any clarification.</p>\n<p>Warm regards<br>NFI Coordinator<br>Neonates Foundation of India</p>\n",
+  "subject": "{{ case_number }} Sponsor approval notification – {{ baby_name }} – SRT",
+  "use_html": 1
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Email Template",
+  "modified": "2026-10-08 00:03:19.650607",
+  "name": "NFI Rejection",
+  "reference_doctype": "NFI Case",
+  "response": null,
+  "response_html": "<p>Dear {{ hospital }} Team,</p>\n<p>Greetings from Neonates Foundation of India.</p>\n<p>We regret to inform you that the case of {{ baby_name }} has been rejected.</p>\n<p><strong>Reason:</strong> {{ rejection_reason }}</p>\n<p>Thank you for your understanding.</p>\n<p>Warm regards<br>NFI Coordinator<br>Neonates Foundation of India</p>\n",
+  "subject": "{{ case_number }} Rejection notification – {{ baby_name }}",
+  "use_html": 1
+ }
+]

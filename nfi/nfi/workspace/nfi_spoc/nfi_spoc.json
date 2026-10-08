@@ -1,0 +1,83 @@
+{
+ "charts": [
+  {
+   "label": "Cases by Program",
+   "chart_name": "NFI Cases by Program"
+  }
+ ],
+ "content": "[{\"id\": \"ujOeHwdFcA\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"My Drafts\", \"col\": 4}}, {\"id\": \"efAZhnM6Jy\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Information Needed\", \"col\": 4}}, {\"id\": \"8c1rihtYlK\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Processing\", \"col\": 4}}, {\"id\": \"NxHddmQAtK\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Discharge Documents\", \"col\": 4}}, {\"id\": \"CsXRpJG2Tr\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Paid\", \"col\": 4}}, {\"id\": \"8hzUjEcPVJ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Program\", \"col\": 12}}, {\"id\": \"2tRKJC06DP\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"dRO9YrxPbC\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Case\", \"col\": 3}}, {\"id\": \"khdVipy2eB\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}]",
+ "creation": "2026-10-08 13:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "external_link": "",
+ "for_user": "",
+ "hide_custom": 1,
+ "icon": "baby",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "NFI SPOC",
+ "link_to": "",
+ "link_type": "",
+ "links": [],
+ "modified": "2026-10-08 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NFI",
+ "name": "NFI SPOC",
+ "number_cards": [
+  {
+   "label": "My Drafts",
+   "number_card_name": "NFI My Drafts"
+  },
+  {
+   "label": "Information Needed",
+   "number_card_name": "NFI Information Needed"
+  },
+  {
+   "label": "Processing",
+   "number_card_name": "NFI Processing"
+  },
+  {
+   "label": "Awaiting Discharge Documents",
+   "number_card_name": "NFI Awaiting Discharge Documents"
+  },
+  {
+   "label": "Paid",
+   "number_card_name": "NFI Paid Cases"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "NFI SPOC"
+  }
+ ],
+ "sequence_id": 1,
+ "shortcuts": [
+  {
+   "label": "New Case",
+   "link_to": "NFI Case",
+   "type": "DocType",
+   "doc_view": "New",
+   "stats_filter": "",
+   "color": "Grey",
+   "format": ""
+  },
+  {
+   "label": "Cases",
+   "link_to": "NFI Case",
+   "type": "DocType",
+   "doc_view": "List",
+   "stats_filter": "",
+   "color": "Grey",
+   "format": ""
+  }
+ ],
+ "title": "NFI SPOC",
+ "type": "Workspace"
+}

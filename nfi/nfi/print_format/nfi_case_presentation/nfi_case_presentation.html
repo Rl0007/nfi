@@ -1,0 +1,100 @@
+{% from "nfi/templates/includes/nfi_print.html" import style, header, row, flag, join_values, money, pregnancy_history, conception, diagnoses, birth_weight with context %}
+{{ style() }}
+<div class="nfi-print">
+	{{ header(_("Case Presentation"), doc) }}
+
+	<div class="nfi-section">
+	<h2>{{ _("Review Introduction") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Review date", frappe.utils.formatdate(frappe.utils.nowdate())) }}
+		{{ row("Case Number", doc.case_number) }}
+		{{ row("Baby of", doc.baby_name) }}
+		{{ row("Hospital", doc.hospital) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Parents Background") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Parents names", join_values([doc.father_name, doc.mother_name], " & ")) }}
+		{{ row("Years of marriage", doc.interim_married_life_years or doc.fa_date_of_marriage) }}
+		{{ row("Father date of birth", doc.fa_father_date_of_birth) }}
+		{{ row("Mother age", (doc.interim_age_years ~ " years") if doc.interim_age_years else doc.fa_mother_date_of_birth) }}
+		{{ row("Father occupation and earnings", join_values([doc.fa_father_occupation, doc.fa_father_monthly_or_daily_wages], " — ")) }}
+		{{ row("Mother occupation and earnings", join_values([doc.fa_mother_occupation, doc.fa_mother_monthly_or_daily_wages], " — ")) }}
+		{{ row("Employment details", join_values([doc.fa_father_company_or_employer, doc.fa_mother_company_or_employer], " / ")) }}
+		{{ row("Address", doc.fa_father_address or doc.fa_mother_address) }}
+		{{ row("Education", join_values([doc.fa_father_education, doc.fa_mother_education], " / ")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("General Case Background") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Date of enquiry", frappe.utils.formatdate(doc.creation)) }}
+		{{ row("Baby of", doc.baby_name) }}
+		{{ row("Date of birth", doc.fa_baby_date_of_birth or doc.interim_date_of_birth) }}
+		{{ row("Gender", doc.gender) }}
+		{{ row("In-born or Out-born", join_values([doc.birth_status, doc.fa_outborn_hospital_name], " — ")) }}
+		{{ row("NICU treatment hospital", doc.hospital) }}
+		{{ row("NICU admission date", doc.fa_nicu_admission_date) }}
+		{{ row("Pregnancy history", pregnancy_history(doc)) }}
+		{{ row("IVF, IUI or natural conception", conception(doc)) }}
+		{{ row("Type of delivery", doc.fa_type_of_delivery) }}
+		{{ row("Delivery cost", doc.fa_delivery_charges) }}
+		{{ row("Estimate and expected NICU days", join_values([money(doc.hospital_estimate) or doc.fa_total_estimated_hospital_bill, doc.fa_estimated_nicu_stay], " — ")) }}
+		{{ row("Current running bill", doc.fa_current_outstanding_bill) }}
+		{{ row("Advance paid for NICU", doc.fa_advance_paid_by_family) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Medical Condition") }}</h2>
+	<table class="nfi-fields">
+		{{ row("APGAR score", doc.interim_apgar_score) }}
+		{{ row("Birth weight", birth_weight(doc)) }}
+		{{ row("Gestational age", doc.interim_gestational_age or doc.fa_gestational_age) }}
+		{{ row("Reason for NICU admission", diagnoses(doc)) }}
+		{{ row("Current status of baby", doc.interim_case_summary) }}
+		{{ row("Plan of discharge", doc.interim_plan_of_discharge) }}
+		{{ row("Additional clinical information", join_values([doc.interim_antenatal_risk_factors, doc.interim_remarks], "\n")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Other Family Details") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Household and family background", join_values([(doc.fa_number_of_family_members ~ " family members") if doc.fa_number_of_family_members else "", doc.fa_family_details_additional_fields], "\n")) }}
+		{{ row("Assets and property", join_values([doc.fa_father_assets_land_or_house, doc.fa_mother_assets_land_or_house], " / ")) }}
+		{{ row("Employment and income", doc.fa_employment_and_financial_details_additional_fields) }}
+		{{ row("Loans and financial support", join_values([flag(doc.fa_other_support_received), doc.fa_other_support_source_or_details], " — ")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Financial Snapshot") }}</h2>
+	<table class="nfi-grid">
+		<thead><tr><th>{{ _("Field") }}</th><th>{{ _("Father") }}</th><th>{{ _("Mother") }}</th></tr></thead>
+		<tbody>
+			{% for label, father_value, mother_value in [
+				("Beneficiary name", doc.father_name, doc.mother_name),
+				("Hospital", doc.hospital, doc.hospital),
+				("Bank statement (last six months)", flag(doc.fa_bank_statement_last_six_months), ""),
+				("Income certificate", flag(doc.fa_tahsildar_income_certificate), ""),
+				("Other income proof", doc.fa_other_income_proof, ""),
+				("Occupation", doc.fa_father_occupation, doc.fa_mother_occupation),
+				("Employer", doc.fa_father_company_or_employer, doc.fa_mother_company_or_employer),
+				("Monthly earnings", doc.fa_father_monthly_or_daily_wages, doc.fa_mother_monthly_or_daily_wages),
+				("Assets", doc.fa_father_assets_land_or_house, doc.fa_mother_assets_land_or_house),
+			] %}
+			<tr><th>{{ _(label) }}</th><td>{{ (father_value or "—") | e }}</td><td>{{ (mother_value or "—") | e }}</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<table class="nfi-fields">
+		{{ row("Hospital estimate", money(doc.hospital_estimate)) }}
+		{{ row("Recommended support", money(doc.recommended_amount)) }}
+		{{ row("Financial assessment", doc.fa_income_proof_additional_fields) }}
+	</table>
+	</div>
+</div>

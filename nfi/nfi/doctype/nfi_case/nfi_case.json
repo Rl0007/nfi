@@ -1,0 +1,1823 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-10-07 23:51:47.595070",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_intake",
+  "case_number",
+  "case_type",
+  "original_case",
+  "is_topup",
+  "has_topup",
+  "column_break_intake_status",
+  "workflow_state",
+  "spoc_status",
+  "hospital",
+  "program",
+  "review_route",
+  "director",
+  "section_parents",
+  "mother_name",
+  "mother_mobile",
+  "column_break_parents",
+  "father_name",
+  "father_mobile",
+  "section_baby",
+  "baby_name",
+  "gender",
+  "column_break_baby",
+  "birth_status",
+  "section_documents",
+  "documents",
+  "tab_fa",
+  "section_fa_beneficiary_details",
+  "fa_baby_or_beneficiary_name",
+  "fa_father_name",
+  "fa_father_contact_number",
+  "fa_father_address",
+  "fa_father_date_of_birth",
+  "fa_father_education",
+  "fa_mother_name",
+  "column_fa_beneficiary_details",
+  "fa_mother_contact_number",
+  "fa_mother_address",
+  "fa_mother_date_of_birth",
+  "fa_mother_education",
+  "fa_date_of_marriage",
+  "fa_beneficiary_details_additional_fields",
+  "section_fa_employment_and_financial_details",
+  "fa_father_occupation",
+  "fa_father_company_or_employer",
+  "fa_father_assets_land_or_house",
+  "fa_father_monthly_or_daily_wages",
+  "fa_mother_occupation",
+  "column_fa_employment_and_financial_details",
+  "fa_mother_company_or_employer",
+  "fa_mother_assets_land_or_house",
+  "fa_mother_monthly_or_daily_wages",
+  "fa_employment_and_financial_details_additional_fields",
+  "section_fa_income_proof",
+  "fa_tahsildar_income_certificate",
+  "fa_bank_statement_last_six_months",
+  "column_fa_income_proof",
+  "fa_other_income_proof",
+  "fa_income_proof_additional_fields",
+  "section_fa_medical_details",
+  "fa_baby_date_of_birth",
+  "fa_time_of_birth",
+  "fa_gender",
+  "fa_birth_weight",
+  "fa_inborn_or_outborn",
+  "fa_outborn_hospital_name",
+  "fa_type_of_conception",
+  "fa_gestational_age",
+  "fa_type_of_delivery",
+  "column_fa_medical_details",
+  "fa_delivery_charges",
+  "fa_gravida",
+  "fa_nicu_admission_date",
+  "fa_estimated_nicu_stay",
+  "fa_total_estimated_hospital_bill",
+  "fa_advance_paid_by_family",
+  "fa_current_outstanding_bill",
+  "fa_medical_details_additional_fields",
+  "section_fa_family_details",
+  "fa_number_of_family_members",
+  "fa_other_support_received",
+  "column_fa_family_details",
+  "fa_other_support_source_or_details",
+  "fa_family_details_additional_fields",
+  "section_fa_declaration_of_beneficiary",
+  "fa_declarant_name",
+  "fa_parent_name_filled",
+  "fa_parent_name",
+  "fa_parent_signature_present",
+  "fa_parent_signoff_complete",
+  "fa_information_truth_declaration_present",
+  "fa_information_truth_signature_present",
+  "column_fa_declaration_of_beneficiary",
+  "fa_bank_statement_and_meeting_consent_name",
+  "fa_bank_statement_and_meeting_consent_signature_present",
+  "fa_photo_and_video_consent_name",
+  "fa_photo_and_video_consent_signature_present",
+  "fa_declaration_date",
+  "fa_declaration_of_beneficiary_additional_fields",
+  "section_fa_hospital_approval",
+  "fa_approval_present",
+  "fa_doctor_name",
+  "fa_doctor_name_filled",
+  "fa_designation",
+  "fa_signature_present",
+  "column_fa_hospital_approval",
+  "fa_stamp_present",
+  "fa_doctor_signoff_complete",
+  "fa_approval_date",
+  "fa_hospital_approval_additional_fields",
+  "tab_interim",
+  "section_interim_baby_details",
+  "interim_name",
+  "interim_date_of_birth",
+  "interim_gender",
+  "interim_birth_weight_grams",
+  "interim_inborn",
+  "interim_outborn",
+  "column_interim_baby_details",
+  "interim_apgar_score",
+  "interim_time_of_birth",
+  "interim_place_of_birth",
+  "interim_gestational_age",
+  "interim_case_summary",
+  "interim_baby_details_additional_fields",
+  "section_interim_maternal_details",
+  "interim_married_life_years",
+  "interim_age_years",
+  "interim_gravida",
+  "interim_para",
+  "interim_abortions",
+  "interim_living_children",
+  "interim_natural_conception",
+  "interim_iui",
+  "interim_ivf",
+  "interim_antenatal_risk_factors",
+  "interim_diagnosis_prematurity",
+  "column_interim_maternal_details",
+  "interim_diagnosis_low_birth_weight",
+  "interim_diagnosis_respiratory_distress_syndrome",
+  "interim_diagnosis_transient_tachypnea_of_the_newborn",
+  "interim_diagnosis_sepsis",
+  "interim_diagnosis_hypoglycemia",
+  "interim_diagnosis_necrotizing_enterocolitis",
+  "interim_diagnosis_feeding_intolerance",
+  "interim_diagnosis_patent_ductus_arteriosus",
+  "interim_diagnosis_neonatal_hyperbilirubinemia",
+  "interim_diagnosis_others",
+  "interim_maternal_details_additional_fields",
+  "section_interim_treatment_given",
+  "interim_mechanical_ventilation",
+  "interim_cpap",
+  "interim_hhfnc",
+  "interim_oxygen",
+  "interim_iv_antibiotics_yes",
+  "interim_iv_antibiotics_no",
+  "column_interim_treatment_given",
+  "interim_inotropes_yes",
+  "interim_inotropes_no",
+  "interim_tpn_yes",
+  "interim_tpn_no",
+  "interim_others",
+  "interim_treatment_given_additional_fields",
+  "section_interim_current_status",
+  "interim_day_of_life",
+  "interim_today_s_weight_grams",
+  "interim_corrected_gestational_age",
+  "interim_ongoing_treatment_respiration_mechanical_ventilation",
+  "interim_ongoing_treatment_respiration_cpap",
+  "interim_ongoing_treatment_respiration_hfnc",
+  "interim_ongoing_treatment_respiration_oxygen",
+  "interim_ongoing_treatment_feeding_nothing_by_mouth",
+  "interim_ongoing_treatment_feeding_orogastric_feeding",
+  "interim_ongoing_treatment_feeding_palada",
+  "interim_ongoing_treatment_feeding_direct_breastfeeding",
+  "column_interim_current_status",
+  "interim_ongoing_treatment_others",
+  "interim_plan_of_discharge",
+  "interim_investigations_attached_labs",
+  "interim_investigations_attached_x_ray",
+  "interim_investigations_attached_scans",
+  "interim_investigations_attached_others",
+  "interim_remarks",
+  "interim_signing_doctor_name",
+  "interim_signature_present",
+  "interim_stamp_present",
+  "interim_current_status_additional_fields",
+  "tab_verification",
+  "bene_calls",
+  "tab_review",
+  "medical_status",
+  "social_status",
+  "column_break_review",
+  "financial_status",
+  "director_decision",
+  "section_review_log",
+  "review_log",
+  "tab_money",
+  "hospital_estimate",
+  "recommended_amount",
+  "director_approved_amount",
+  "final_bill",
+  "column_break_money",
+  "requested_topup",
+  "approved_topup",
+  "final_sponsor_amount",
+  "srt_vials",
+  "tab_outcome",
+  "rejection_reason",
+  "column_break_outcome",
+  "return_reason",
+  "section_payments",
+  "payment_due_date",
+  "column_break_payments",
+  "total_paid",
+  "section_payment_rows",
+  "payments",
+  "tab_lifecycle",
+  "mortality",
+  "mortality_date",
+  "discharge_or_death_date",
+  "final_documents_received_date",
+  "column_break_lifecycle",
+  "post_discharge_photo_status",
+  "video_testimonial_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_intake",
+   "fieldtype": "Tab Break",
+   "label": "Intake"
+  },
+  {
+   "bold": 1,
+   "fieldname": "case_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Case Number",
+   "no_copy": 1,
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "default": "Fresh Case",
+   "fieldname": "case_type",
+   "fieldtype": "Select",
+   "label": "Case Type",
+   "options": "Fresh Case\nTop-up"
+  },
+  {
+   "depends_on": "eval:doc.case_type=='Top-up'",
+   "fieldname": "original_case",
+   "fieldtype": "Link",
+   "label": "Original Case",
+   "mandatory_depends_on": "eval:doc.case_type=='Top-up'",
+   "options": "NFI Case"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_topup",
+   "fieldtype": "Check",
+   "label": "Is Top-up",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_topup",
+   "fieldtype": "Check",
+   "label": "Has Top-up",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_intake_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "spoc_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "hospital",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Hospital",
+   "options": "NFI Hospital"
+  },
+  {
+   "fieldname": "program",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Program",
+   "options": "NFI Program"
+  },
+  {
+   "fetch_from": "program.review_route",
+   "fieldname": "review_route",
+   "fieldtype": "Data",
+   "label": "Review Route",
+   "read_only": 1
+  },
+  {
+   "fieldname": "director",
+   "fieldtype": "Link",
+   "label": "Director",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "description": "Parent name must match the submitted ID or Aadhaar card.",
+   "fieldname": "section_parents",
+   "fieldtype": "Section Break",
+   "label": "Parents"
+  },
+  {
+   "fieldname": "mother_name",
+   "fieldtype": "Data",
+   "label": "Mother Name"
+  },
+  {
+   "fieldname": "mother_mobile",
+   "fieldtype": "Data",
+   "label": "Mother Mobile"
+  },
+  {
+   "fieldname": "column_break_parents",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father Name"
+  },
+  {
+   "fieldname": "father_mobile",
+   "fieldtype": "Data",
+   "label": "Father Mobile"
+  },
+  {
+   "fieldname": "section_baby",
+   "fieldtype": "Section Break",
+   "label": "Baby"
+  },
+  {
+   "fieldname": "baby_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Baby Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "\nMale\nFemale\nOther"
+  },
+  {
+   "fieldname": "column_break_baby",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "birth_status",
+   "fieldtype": "Select",
+   "label": "Birth Status",
+   "options": "\nIn-born\nOut-born"
+  },
+  {
+   "fieldname": "section_documents",
+   "fieldtype": "Section Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "label": "Documents",
+   "options": "NFI Case Document"
+  },
+  {
+   "fieldname": "tab_fa",
+   "fieldtype": "Tab Break",
+   "label": "Fund Application"
+  },
+  {
+   "fieldname": "section_fa_beneficiary_details",
+   "fieldtype": "Section Break",
+   "label": "Beneficiary Details"
+  },
+  {
+   "fieldname": "fa_baby_or_beneficiary_name",
+   "fieldtype": "Data",
+   "label": "Baby or Beneficiary Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_name",
+   "fieldtype": "Data",
+   "label": "Father - Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_contact_number",
+   "fieldtype": "Data",
+   "label": "Father - Contact Number",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_address",
+   "fieldtype": "Data",
+   "label": "Father - Address",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_date_of_birth",
+   "fieldtype": "Data",
+   "label": "Father - Date of Birth as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_education",
+   "fieldtype": "Data",
+   "label": "Father - Education",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_name",
+   "fieldtype": "Data",
+   "label": "Mother - Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_beneficiary_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_mother_contact_number",
+   "fieldtype": "Data",
+   "label": "Mother - Contact Number",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_address",
+   "fieldtype": "Data",
+   "label": "Mother - Address",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_date_of_birth",
+   "fieldtype": "Data",
+   "label": "Mother - Date of Birth as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_education",
+   "fieldtype": "Data",
+   "label": "Mother - Education",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_date_of_marriage",
+   "fieldtype": "Data",
+   "label": "Date of Marriage as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_beneficiary_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_employment_and_financial_details",
+   "fieldtype": "Section Break",
+   "label": "Employment and Financial Details"
+  },
+  {
+   "fieldname": "fa_father_occupation",
+   "fieldtype": "Data",
+   "label": "Father - Occupation",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_company_or_employer",
+   "fieldtype": "Data",
+   "label": "Father - Company or Employer",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_assets_land_or_house",
+   "fieldtype": "Data",
+   "label": "Father - Assets Land or House",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_father_monthly_or_daily_wages",
+   "fieldtype": "Data",
+   "label": "Father - Monthly or Daily Wages as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_occupation",
+   "fieldtype": "Data",
+   "label": "Mother - Occupation",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_employment_and_financial_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_mother_company_or_employer",
+   "fieldtype": "Data",
+   "label": "Mother - Company or Employer",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_assets_land_or_house",
+   "fieldtype": "Data",
+   "label": "Mother - Assets Land or House",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_mother_monthly_or_daily_wages",
+   "fieldtype": "Data",
+   "label": "Mother - Monthly or Daily Wages as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_employment_and_financial_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_income_proof",
+   "fieldtype": "Section Break",
+   "label": "Income Proof"
+  },
+  {
+   "fieldname": "fa_tahsildar_income_certificate",
+   "fieldtype": "Select",
+   "label": "Tahsildar Income Certificate",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_bank_statement_last_six_months",
+   "fieldtype": "Select",
+   "label": "Bank Statement Last Six Months",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_income_proof",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_other_income_proof",
+   "fieldtype": "Data",
+   "label": "Other Income Proof",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_income_proof_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_medical_details",
+   "fieldtype": "Section Break",
+   "label": "Medical Details"
+  },
+  {
+   "fieldname": "fa_baby_date_of_birth",
+   "fieldtype": "Data",
+   "label": "Baby Date of Birth as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_time_of_birth",
+   "fieldtype": "Data",
+   "label": "Time of Birth as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_gender",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_birth_weight",
+   "fieldtype": "Data",
+   "label": "Birth Weight as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_inborn_or_outborn",
+   "fieldtype": "Data",
+   "label": "Inborn or Outborn as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_outborn_hospital_name",
+   "fieldtype": "Data",
+   "label": "Outborn Hospital Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_type_of_conception",
+   "fieldtype": "Data",
+   "label": "Type of Conception",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_gestational_age",
+   "fieldtype": "Data",
+   "label": "Gestational Age as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_type_of_delivery",
+   "fieldtype": "Data",
+   "label": "Type of Delivery",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_medical_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_delivery_charges",
+   "fieldtype": "Data",
+   "label": "Delivery Charges as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_gravida",
+   "fieldtype": "Data",
+   "label": "Gravida as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_nicu_admission_date",
+   "fieldtype": "Data",
+   "label": "NICU Admission Date as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_estimated_nicu_stay",
+   "fieldtype": "Data",
+   "label": "Estimated NICU Stay as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_total_estimated_hospital_bill",
+   "fieldtype": "Data",
+   "label": "Total Estimated Hospital Bill as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_advance_paid_by_family",
+   "fieldtype": "Data",
+   "label": "Advance Paid by Family as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_current_outstanding_bill",
+   "fieldtype": "Data",
+   "label": "Current Outstanding Bill as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_medical_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_family_details",
+   "fieldtype": "Section Break",
+   "label": "Family Details"
+  },
+  {
+   "fieldname": "fa_number_of_family_members",
+   "fieldtype": "Int",
+   "label": "Number of Family Members",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_other_support_received",
+   "fieldtype": "Select",
+   "label": "Other Support Received",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_family_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_other_support_source_or_details",
+   "fieldtype": "Data",
+   "label": "Other Support Source or Details",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_family_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_declaration_of_beneficiary",
+   "fieldtype": "Section Break",
+   "label": "Declaration of Beneficiary"
+  },
+  {
+   "fieldname": "fa_declarant_name",
+   "fieldtype": "Data",
+   "label": "Declarant Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_parent_name_filled",
+   "fieldtype": "Select",
+   "label": "Parent Name Filled",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_parent_name",
+   "fieldtype": "Data",
+   "label": "Parent Name as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_parent_signature_present",
+   "fieldtype": "Select",
+   "label": "Parent Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_parent_signoff_complete",
+   "fieldtype": "Select",
+   "label": "Parent Signoff Complete",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_information_truth_declaration_present",
+   "fieldtype": "Select",
+   "label": "Information Truth Declaration Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_information_truth_signature_present",
+   "fieldtype": "Select",
+   "label": "Information Truth Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_declaration_of_beneficiary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_bank_statement_and_meeting_consent_name",
+   "fieldtype": "Data",
+   "label": "Bank Statement and Meeting Consent Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_bank_statement_and_meeting_consent_signature_present",
+   "fieldtype": "Select",
+   "label": "Bank Statement and Meeting Consent Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_photo_and_video_consent_name",
+   "fieldtype": "Data",
+   "label": "Photo and Video Consent Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_photo_and_video_consent_signature_present",
+   "fieldtype": "Select",
+   "label": "Photo and Video Consent Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_declaration_date",
+   "fieldtype": "Data",
+   "label": "Declaration Date as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_declaration_of_beneficiary_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_fa_hospital_approval",
+   "fieldtype": "Section Break",
+   "label": "Hospital Approval"
+  },
+  {
+   "fieldname": "fa_approval_present",
+   "fieldtype": "Select",
+   "label": "Approval Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_doctor_name",
+   "fieldtype": "Data",
+   "label": "Doctor Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_doctor_name_filled",
+   "fieldtype": "Select",
+   "label": "Doctor Name Filled",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_signature_present",
+   "fieldtype": "Select",
+   "label": "Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_fa_hospital_approval",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fa_stamp_present",
+   "fieldtype": "Select",
+   "label": "Stamp Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_doctor_signoff_complete",
+   "fieldtype": "Select",
+   "label": "Doctor Signoff Complete",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_approval_date",
+   "fieldtype": "Data",
+   "label": "Approval Date as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "fa_hospital_approval_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_interim",
+   "fieldtype": "Tab Break",
+   "label": "Interim Summary"
+  },
+  {
+   "fieldname": "section_interim_baby_details",
+   "fieldtype": "Section Break",
+   "label": "Baby Details"
+  },
+  {
+   "fieldname": "interim_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_date_of_birth",
+   "fieldtype": "Data",
+   "label": "Date of Birth",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_gender",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_birth_weight_grams",
+   "fieldtype": "Int",
+   "label": "Birth Weight Grams",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_inborn",
+   "fieldtype": "Select",
+   "label": "Inborn",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_outborn",
+   "fieldtype": "Select",
+   "label": "Outborn",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_interim_baby_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interim_apgar_score",
+   "fieldtype": "Data",
+   "label": "Apgar Score as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_time_of_birth",
+   "fieldtype": "Data",
+   "label": "Time of Birth",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_place_of_birth",
+   "fieldtype": "Data",
+   "label": "Place of Birth",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_gestational_age",
+   "fieldtype": "Data",
+   "label": "Gestational Age as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_case_summary",
+   "fieldtype": "Small Text",
+   "label": "Case Summary",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_baby_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_interim_maternal_details",
+   "fieldtype": "Section Break",
+   "label": "Maternal Details"
+  },
+  {
+   "fieldname": "interim_married_life_years",
+   "fieldtype": "Int",
+   "label": "Married Life Years",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_age_years",
+   "fieldtype": "Int",
+   "label": "Age Years",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_gravida",
+   "fieldtype": "Int",
+   "label": "Gravida",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_para",
+   "fieldtype": "Int",
+   "label": "Para",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_abortions",
+   "fieldtype": "Int",
+   "label": "Abortions",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_living_children",
+   "fieldtype": "Int",
+   "label": "Living Children",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_natural_conception",
+   "fieldtype": "Select",
+   "label": "Natural Conception",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_iui",
+   "fieldtype": "Select",
+   "label": "IUI",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ivf",
+   "fieldtype": "Select",
+   "label": "IVF",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_antenatal_risk_factors",
+   "fieldtype": "Small Text",
+   "label": "Antenatal Risk Factors",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_prematurity",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Prematurity",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_interim_maternal_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interim_diagnosis_low_birth_weight",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Low Birth Weight",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_respiratory_distress_syndrome",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Respiratory Distress Syndrome",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_transient_tachypnea_of_the_newborn",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Transient Tachypnea of the Newborn",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_sepsis",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Sepsis",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_hypoglycemia",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Hypoglycemia",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_necrotizing_enterocolitis",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Necrotizing Enterocolitis",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_feeding_intolerance",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Feeding Intolerance",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_patent_ductus_arteriosus",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Patent Ductus Arteriosus",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_neonatal_hyperbilirubinemia",
+   "fieldtype": "Select",
+   "label": "Diagnosis - Neonatal Hyperbilirubinemia",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_diagnosis_others",
+   "fieldtype": "Data",
+   "label": "Diagnosis - Others",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_maternal_details_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_interim_treatment_given",
+   "fieldtype": "Section Break",
+   "label": "Treatment Given"
+  },
+  {
+   "fieldname": "interim_mechanical_ventilation",
+   "fieldtype": "Select",
+   "label": "Mechanical Ventilation",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_cpap",
+   "fieldtype": "Select",
+   "label": "CPAP",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_hhfnc",
+   "fieldtype": "Select",
+   "label": "HHFNC",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_oxygen",
+   "fieldtype": "Select",
+   "label": "Oxygen",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_iv_antibiotics_yes",
+   "fieldtype": "Select",
+   "label": "IV Antibiotics Yes",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_iv_antibiotics_no",
+   "fieldtype": "Select",
+   "label": "IV Antibiotics No",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_interim_treatment_given",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interim_inotropes_yes",
+   "fieldtype": "Select",
+   "label": "Inotropes Yes",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_inotropes_no",
+   "fieldtype": "Select",
+   "label": "Inotropes No",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_tpn_yes",
+   "fieldtype": "Select",
+   "label": "TPN Yes",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_tpn_no",
+   "fieldtype": "Select",
+   "label": "TPN No",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_others",
+   "fieldtype": "Data",
+   "label": "Others",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_treatment_given_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_interim_current_status",
+   "fieldtype": "Section Break",
+   "label": "Current Status"
+  },
+  {
+   "fieldname": "interim_day_of_life",
+   "fieldtype": "Data",
+   "label": "Day of Life as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_today_s_weight_grams",
+   "fieldtype": "Int",
+   "label": "Today's Weight Grams",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_corrected_gestational_age",
+   "fieldtype": "Data",
+   "label": "Corrected Gestational Age as Written",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_respiration_mechanical_ventilation",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Respiration - Mechanical Ventilation",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_respiration_cpap",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Respiration - CPAP",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_respiration_hfnc",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Respiration - HFNC",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_respiration_oxygen",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Respiration - Oxygen",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_feeding_nothing_by_mouth",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Feeding - Nothing by Mouth",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_feeding_orogastric_feeding",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Feeding - Orogastric Feeding",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_feeding_palada",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Feeding - Palada",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_feeding_direct_breastfeeding",
+   "fieldtype": "Select",
+   "label": "Ongoing Treatment - Feeding - Direct Breastfeeding",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_interim_current_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "interim_ongoing_treatment_others",
+   "fieldtype": "Data",
+   "label": "Ongoing Treatment - Others",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_plan_of_discharge",
+   "fieldtype": "Small Text",
+   "label": "Plan of Discharge",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_investigations_attached_labs",
+   "fieldtype": "Select",
+   "label": "Investigations Attached - Labs",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_investigations_attached_x_ray",
+   "fieldtype": "Select",
+   "label": "Investigations Attached - X Ray",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_investigations_attached_scans",
+   "fieldtype": "Select",
+   "label": "Investigations Attached - Scans",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_investigations_attached_others",
+   "fieldtype": "Data",
+   "label": "Investigations Attached - Others",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_signing_doctor_name",
+   "fieldtype": "Data",
+   "label": "Signing Doctor Name",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_signature_present",
+   "fieldtype": "Select",
+   "label": "Signature Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_stamp_present",
+   "fieldtype": "Select",
+   "label": "Stamp Present",
+   "length": 16,
+   "options": "\nchecked\nunchecked\nunclear\nnot present",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "interim_current_status_additional_fields",
+   "fieldtype": "Small Text",
+   "label": "Additional Fields",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_verification",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
+  },
+  {
+   "fieldname": "bene_calls",
+   "fieldtype": "Table",
+   "label": "Bene Calls",
+   "options": "NFI Bene Call",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_review",
+   "fieldtype": "Tab Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "medical_status",
+   "fieldtype": "Select",
+   "label": "Medical Status",
+   "options": "\nPending\nQuery Raised\nApproved\nRejected",
+   "permlevel": 1
+  },
+  {
+   "depends_on": "eval:doc.review_route=='Medical, Social & Financial'",
+   "fieldname": "social_status",
+   "fieldtype": "Select",
+   "label": "Social Status",
+   "options": "\nPending\nQuery Raised\nApproved\nRejected",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_review",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.review_route=='Medical, Social & Financial'",
+   "fieldname": "financial_status",
+   "fieldtype": "Select",
+   "label": "Financial Status",
+   "options": "\nPending\nQuery Raised\nApproved\nRejected",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "director_decision",
+   "fieldtype": "Select",
+   "label": "Director Decision",
+   "no_copy": 1,
+   "options": "\nApproved\nRejected",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_review_log",
+   "fieldtype": "Section Break",
+   "label": "Review Log"
+  },
+  {
+   "fieldname": "review_log",
+   "fieldtype": "Table",
+   "label": "Review Log",
+   "options": "NFI Review Log",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_money",
+   "fieldtype": "Tab Break",
+   "label": "Money"
+  },
+  {
+   "fieldname": "hospital_estimate",
+   "fieldtype": "Currency",
+   "label": "Hospital Estimate",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "recommended_amount",
+   "fieldtype": "Currency",
+   "label": "Recommended Amount",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "director_approved_amount",
+   "fieldtype": "Currency",
+   "label": "Director Approved Amount",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "final_bill",
+   "fieldtype": "Currency",
+   "label": "Final Bill",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_money",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_topup",
+   "fieldtype": "Currency",
+   "label": "Requested Top-up",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "approved_topup",
+   "fieldtype": "Currency",
+   "label": "Approved Top-up",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "final_sponsor_amount",
+   "fieldtype": "Currency",
+   "label": "Final Sponsor Amount",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "srt_vials",
+   "fieldtype": "Int",
+   "label": "SRT Vials",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_outcome",
+   "fieldtype": "Tab Break",
+   "label": "Outcome & Payment"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "permlevel": 2
+  },
+  {
+   "fieldname": "column_break_outcome",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "return_reason",
+   "fieldtype": "Small Text",
+   "label": "Return Reason",
+   "permlevel": 2
+  },
+  {
+   "fieldname": "section_payments",
+   "fieldtype": "Section Break",
+   "label": "Payments"
+  },
+  {
+   "fieldname": "payment_due_date",
+   "fieldtype": "Date",
+   "label": "Payment Due Date",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_payments",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_paid",
+   "fieldtype": "Currency",
+   "label": "Total Paid",
+   "no_copy": 1,
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_payment_rows",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payments",
+   "fieldtype": "Table",
+   "label": "Payments",
+   "no_copy": 1,
+   "options": "NFI Payment",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "tab_lifecycle",
+   "fieldtype": "Tab Break",
+   "label": "Lifecycle"
+  },
+  {
+   "default": "0",
+   "fieldname": "mortality",
+   "fieldtype": "Check",
+   "label": "Mortality",
+   "permlevel": 1
+  },
+  {
+   "depends_on": "mortality",
+   "fieldname": "mortality_date",
+   "fieldtype": "Date",
+   "label": "Mortality Date",
+   "mandatory_depends_on": "mortality",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "discharge_or_death_date",
+   "fieldtype": "Date",
+   "label": "Date of Discharge or Death",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "final_documents_received_date",
+   "fieldtype": "Date",
+   "label": "Final Documents Received Date",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_lifecycle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "post_discharge_photo_status",
+   "fieldtype": "Select",
+   "label": "Post-discharge Baby Photo Status",
+   "options": "\nReceived\nNot Received",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "video_testimonial_status",
+   "fieldtype": "Select",
+   "label": "Video Testimonial Status",
+   "options": "\nPending\nRequested\nReceived\nDeclined",
+   "permlevel": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-07 23:51:47.595070",
+ "modified_by": "Administrator",
+ "module": "NFI",
+ "name": "NFI Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI SPOC",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "NFI SPOC"
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Coordinator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "NFI Coordinator",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "NFI Coordinator",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Director",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "NFI Director",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "NFI Director",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Accountant",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "NFI Accountant",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "NFI Accountant",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFI Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "NFI Admin",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "NFI Admin",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "case_number,mother_name,hospital",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "baby_name",
+ "track_changes": 1
+}

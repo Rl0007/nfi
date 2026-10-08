@@ -1,0 +1,108 @@
+{% from "nfi/templates/includes/nfi_print.html" import style, header, row, flag, join_values, money, pregnancy_history, conception, diagnoses, birth_weight with context %}
+{% set hospital_city = frappe.db.get_value("NFI Hospital", doc.hospital, "city") if doc.hospital else "" %}
+{% set medical_notes = doc.review_log | selectattr("committee", "equalto", "Medical") | map(attribute="message") | select | list %}
+{{ style() }}
+<div class="nfi-print">
+	{{ header(_("BCRP Case Summary"), doc) }}
+
+	<table class="nfi-fields">
+		{{ row("Hospital and location", join_values([doc.hospital, hospital_city], ", ")) }}
+		{{ row("Summary date", frappe.utils.formatdate(frappe.utils.nowdate())) }}
+		{{ row("Case received date", frappe.utils.formatdate(doc.creation)) }}
+		{{ row("Case Number", doc.case_number) }}
+	</table>
+
+	<div class="nfi-section">
+	<h2>{{ _("Beneficiary Details") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Baby name", doc.baby_name) }}
+		{{ row("Date of birth", doc.fa_baby_date_of_birth or doc.interim_date_of_birth) }}
+		{{ row("Gender", doc.gender) }}
+		{{ row("Gestation", doc.interim_gestational_age or doc.fa_gestational_age) }}
+		{{ row("Birth weight", birth_weight(doc)) }}
+		{{ row("Out-born hospital", doc.fa_outborn_hospital_name) }}
+		{{ row("Mother age", (doc.interim_age_years ~ " years") if doc.interim_age_years else doc.fa_mother_date_of_birth) }}
+		{{ row("Father date of birth", doc.fa_father_date_of_birth) }}
+		{{ row("Years married", doc.interim_married_life_years or doc.fa_date_of_marriage) }}
+		{{ row("Conception and delivery mode", join_values([conception(doc), doc.fa_type_of_delivery], " — ")) }}
+		{{ row("Delivery charges", doc.fa_delivery_charges) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Parent or Guardian Information") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Mother name", doc.mother_name) }}
+		{{ row("Father name", doc.father_name) }}
+		{{ row("Address", doc.fa_father_address or doc.fa_mother_address) }}
+		{{ row("Contact numbers", join_values([doc.father_mobile, doc.mother_mobile])) }}
+		{{ row("Occupations", join_values([doc.fa_father_occupation, doc.fa_mother_occupation], " / ")) }}
+		{{ row("Household income", join_values([doc.fa_father_monthly_or_daily_wages, doc.fa_mother_monthly_or_daily_wages], " / ")) }}
+		{{ row("Income evidence", join_values([doc.fa_tahsildar_income_certificate and ("Income certificate: " ~ flag(doc.fa_tahsildar_income_certificate)), doc.fa_other_income_proof])) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Pregnancy History") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Pregnancy history", join_values([pregnancy_history(doc), doc.interim_antenatal_risk_factors], "\n")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Family Background") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Family background", join_values([(doc.fa_number_of_family_members ~ " family members") if doc.fa_number_of_family_members else "", doc.fa_family_details_additional_fields], "\n")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Medical Summary") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Clinical summary", doc.interim_case_summary) }}
+		{{ row("Current status", join_values([doc.interim_day_of_life and ("Day of life " ~ doc.interim_day_of_life), doc.interim_today_s_weight_grams and ("Weight " ~ doc.interim_today_s_weight_grams ~ " g"), doc.interim_plan_of_discharge], "\n")) }}
+		{{ row("Secondary conditions", diagnoses(doc)) }}
+		{{ row("NICU admission date", doc.fa_nicu_admission_date) }}
+		{{ row("Actual or expected discharge date", frappe.utils.formatdate(doc.discharge_or_death_date) if doc.discharge_or_death_date else "") }}
+		{{ row("Expected NICU stay", doc.fa_estimated_nicu_stay) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Financial Details") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Estimated total bill", money(doc.hospital_estimate) or doc.fa_total_estimated_hospital_bill) }}
+		{{ row("Advance paid", doc.fa_advance_paid_by_family) }}
+		{{ row("Other sponsors and support", join_values([flag(doc.fa_other_support_received), doc.fa_other_support_source_or_details], " — ")) }}
+		{{ row("Current outstanding bill", doc.fa_current_outstanding_bill) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Coordinator Remarks") }}</h2>
+	<table class="nfi-fields">
+		{{ row("Recommended amount", money(doc.recommended_amount)) }}
+		{{ row("Medical review decision", doc.medical_status) }}
+		{{ row("Supporting correspondence", medical_notes | join("\n")) }}
+	</table>
+	</div>
+
+	<div class="nfi-section">
+	<h2>{{ _("Documents Received") }}</h2>
+	<table class="nfi-grid">
+		<thead><tr><th>{{ _("Document") }}</th><th>{{ _("Folder") }}</th><th>{{ _("Stage") }}</th><th>{{ _("Status") }}</th></tr></thead>
+		<tbody>
+			{% for document in doc.documents %}
+			<tr>
+				<th>{{ document.document_type | e }}</th>
+				<td>{{ document.folder or "—" }}</td>
+				<td>{{ document.stage or "—" }}</td>
+				{% if document.file %}<td class="nfi-received">{{ _("Received") }}</td>{% else %}<td class="nfi-missing">{{ _("Not received") }}</td>{% endif %}
+			</tr>
+			{% else %}
+			<tr><td colspan="4">—</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+</div>

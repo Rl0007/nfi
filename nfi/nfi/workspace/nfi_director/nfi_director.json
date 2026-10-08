@@ -1,0 +1,75 @@
+{
+ "charts": [
+  {
+   "label": "Approved Amount by Program This Month",
+   "chart_name": "NFI Approved Amount by Program This Month"
+  },
+  {
+   "label": "Director Decisions",
+   "chart_name": "NFI Director Decisions"
+  }
+ ],
+ "content": "[{\"id\": \"8yy6Skhj4Y\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting My Decision\", \"col\": 6}}, {\"id\": \"jZ8OvIia8O\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Approved by Me This Month\", \"col\": 6}}, {\"id\": \"G5A2ZnpsoK\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Approved Amount by Program This Month\", \"col\": 6}}, {\"id\": \"qzi4vCK4A4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Director Decisions\", \"col\": 6}}, {\"id\": \"FGGbBlaXkD\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"SIuGIWgIpr\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"To Review\", \"col\": 3}}, {\"id\": \"VFIV4BLFFQ\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}]",
+ "creation": "2026-10-08 13:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "external_link": "",
+ "for_user": "",
+ "hide_custom": 1,
+ "icon": "gavel",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "NFI Director",
+ "link_to": "",
+ "link_type": "",
+ "links": [],
+ "modified": "2026-10-08 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NFI",
+ "name": "NFI Director",
+ "number_cards": [
+  {
+   "label": "Awaiting My Decision",
+   "number_card_name": "NFI Awaiting My Decision"
+  },
+  {
+   "label": "Approved by Me This Month",
+   "number_card_name": "NFI Approved by Me This Month"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "NFI Director"
+  }
+ ],
+ "sequence_id": 3,
+ "shortcuts": [
+  {
+   "label": "To Review",
+   "link_to": "NFI Case",
+   "type": "DocType",
+   "doc_view": "List",
+   "stats_filter": "{\"workflow_state\":\"Director Review\"}",
+   "color": "Orange",
+   "format": "{} Pending"
+  },
+  {
+   "label": "Cases",
+   "link_to": "NFI Case",
+   "type": "DocType",
+   "doc_view": "List",
+   "stats_filter": "",
+   "color": "Grey",
+   "format": ""
+  }
+ ],
+ "title": "NFI Director",
+ "type": "Workspace"
+}

@@ -1,0 +1,23 @@
+.nfi-board-column {
+	width: 272px;
+	max-height: calc(100vh - 260px);
+}
+
+.nfi-board-cards {
+	overflow-y: auto;
+}
+
+.nfi-board-dot {
+	width: 8px;
+	height: 8px;
+	flex-shrink: 0;
+}
+
+.nfi-board-card:hover {
+	box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .nfi-board-column {
+	background-color: transparent;
+	border: 1px solid var(--outline-gray-2);
+}

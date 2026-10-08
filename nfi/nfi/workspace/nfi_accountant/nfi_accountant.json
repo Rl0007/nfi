@@ -1,0 +1,79 @@
+{
+ "charts": [
+  {
+   "label": "Payment Pipeline Amount",
+   "chart_name": "NFI Payment Pipeline Amount"
+  }
+ ],
+ "content": "[{\"id\": \"CHD6R26qI6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Accountant Review\", \"col\": 3}}, {\"id\": \"0ihBeoePW3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Partially Paid\", \"col\": 3}}, {\"id\": \"jSOi27n7yE\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Payment Due in 7 Days\", \"col\": 3}}, {\"id\": \"9ZkAFvmtSb\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Amount in Payment\", \"col\": 3}}, {\"id\": \"IBbuMFd9W8\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Payment Pipeline Amount\", \"col\": 12}}, {\"id\": \"gqcWqiA4Yq\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"j4JRfdQAe6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payments\", \"col\": 3}}, {\"id\": \"NXf1e1CvI5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}]",
+ "creation": "2026-10-08 13:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "external_link": "",
+ "for_user": "",
+ "hide_custom": 1,
+ "icon": "wallet",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "NFI Accountant",
+ "link_to": "",
+ "link_type": "",
+ "links": [],
+ "modified": "2026-10-08 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NFI",
+ "name": "NFI Accountant",
+ "number_cards": [
+  {
+   "label": "Accountant Review",
+   "number_card_name": "NFI Awaiting Accountant"
+  },
+  {
+   "label": "Partially Paid",
+   "number_card_name": "NFI Partially Paid"
+  },
+  {
+   "label": "Payment Due in 7 Days",
+   "number_card_name": "NFI Payment Due in 7 Days"
+  },
+  {
+   "label": "Amount in Payment",
+   "number_card_name": "NFI Sponsor Amount in Payment"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "NFI Accountant"
+  }
+ ],
+ "sequence_id": 4,
+ "shortcuts": [
+  {
+   "label": "Payments",
+   "link_to": "nfi-payments",
+   "type": "Page",
+   "doc_view": "",
+   "stats_filter": "",
+   "color": "Grey",
+   "format": ""
+  },
+  {
+   "label": "Cases",
+   "link_to": "NFI Case",
+   "type": "DocType",
+   "doc_view": "List",
+   "stats_filter": "",
+   "color": "Grey",
+   "format": ""
+  }
+ ],
+ "title": "NFI Accountant",
+ "type": "Workspace"
+}
