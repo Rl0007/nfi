@@ -34,6 +34,7 @@ frappe.ui.form.on("NFI Case", {
 	},
 
 	async refresh(frm) {
+		frm.set_df_property("original_case", "filter_description", __("Approved cases only"));
 		await set_hospital_programs(frm);
 	},
 
