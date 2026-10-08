@@ -1,4 +1,5 @@
 import frappe
+from frappe.permissions import add_permission
 
 SPOC = "NFI SPOC"
 COORDINATOR = "NFI Coordinator"
@@ -108,9 +109,15 @@ TRANSITIONS = [
 		"Approve",
 		APPROVED_AWAITING_DOCUMENTS,
 		COORDINATOR,
-		"doc.director_decision == 'Approved'",
+		"doc.director_decision == 'Approved' and not doc.final_documents_received_date",
 	),
-	("Coordinator Review", "Reject", "Rejected", COORDINATOR, None),
+	(
+		"Coordinator Review",
+		"Reject",
+		"Rejected",
+		COORDINATOR,
+		"not doc.final_documents_received_date",
+	),
 	(
 		"Coordinator Review",
 		"Send to Accountant",
@@ -179,17 +186,34 @@ def after_install():
 	add_roles()
 	add_workflow()
 	add_programs()
+	add_print_format_permission()
+	set_default_currency()
 
 
 def after_migrate():
 	add_roles()
 	add_workflow()
+	add_print_format_permission()
+	set_default_currency()
 
 
 def add_roles():
 	for role_name in ROLES:
 		if not frappe.db.exists("Role", role_name):
 			frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert()
+
+
+def add_print_format_permission():
+	# the print view reads the chosen Print Format with frappe.client.get, which needs read, not select
+	for role_name in ROLES:
+		if not frappe.db.exists("Custom DocPerm", {"parent": "Print Format", "role": role_name}):
+			add_permission("Print Format", role_name)
+
+
+def set_default_currency():
+	if not frappe.db.get_default("currency"):
+		frappe.db.set_single_value("System Settings", "currency", "INR")
+		frappe.db.set_default("currency", "INR")
 
 
 def add_workflow():
