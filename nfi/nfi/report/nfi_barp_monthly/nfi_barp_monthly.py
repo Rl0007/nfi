@@ -19,7 +19,10 @@ AMOUNT_FIELDS = ("hospital_estimate", "director_approved_amount", "final_sponsor
 
 def execute(filters: dict | None = None):
 	filters = filters or {}
-	from_date = getdate(f"{cint(filters.get('year'))}-{cint(filters.get('month')):02d}-01")
+	today = getdate()
+	year = cint(filters.get("year")) or today.year
+	month = cint(filters.get("month")) or today.month
+	from_date = getdate(f"{year}-{month:02d}-01")
 	case_filters = get_case_filters(
 		{"from_date": from_date, "to_date": get_last_day(from_date), "hospital": filters.get("hospital")}
 	)

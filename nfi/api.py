@@ -5,6 +5,7 @@ from frappe.utils import cint, flt
 from frappe.utils.user import get_users_with_role
 
 from nfi.install import ACCOUNTANT, ADMIN, APPROVED_AWAITING_DOCUMENTS, COORDINATOR
+from nfi.permissions import DIRECTOR_EDITOR_ROLES
 
 COORDINATOR_QUEUE_STATES = (
 	"Coordinator Verification",
@@ -31,6 +32,7 @@ PAYMENT_STATES = ("Accountant Review", "Payment Processed", "Partially Paid", "P
 PIPELINE_CARDS_PER_STAGE = 50
 CASE_FIELDS = [
 	"name",
+	"title",
 	"case_number",
 	"baby_name",
 	"mother_name",
@@ -181,5 +183,6 @@ def add_stage_since(rows: list[dict]) -> None:
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def get_users_by_role(doctype: str, txt: str, searchfield: str, start: int, page_len: int, filters: dict):
+	frappe.only_for(list(DIRECTOR_EDITOR_ROLES))
 	filters = {"name": ["in", get_users_with_role(filters.get("role"))]}
 	return user_query(doctype, txt, searchfield, start, page_len, filters)

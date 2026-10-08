@@ -146,8 +146,7 @@ class CasePipeline {
 		const amount =
 			row.final_sponsor_amount || row.director_approved_amount || row.recommended_amount;
 		return $(`<div class="nfi-board-card cursor-pointer rounded-lg border bg-surface-elevation-1 p-3">
-			<div class="truncate text-base-medium text-ink-gray-9">${escape(row.baby_name || row.name)}</div>
-			<div class="truncate text-sm text-ink-gray-5 mt-1">${escape(row.case_number || "")}</div>
+			<div class="truncate text-base-medium text-ink-gray-9">${escape(row.title || row.name)}</div>
 			<div class="flex items-center justify-between mt-2">
 				${
 					amount

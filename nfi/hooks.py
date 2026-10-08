@@ -20,6 +20,7 @@ add_to_apps_screen = [
 		"name": "nfi",
 		"logo": "/assets/nfi/images/nfi-icon.png",
 		"title": "NFI",
+		"route": "/desk/nfi-case",
 		"has_permission": "nfi.permissions.has_app_permission",
 	}
 ]

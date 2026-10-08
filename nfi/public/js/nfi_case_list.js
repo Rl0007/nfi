@@ -55,10 +55,9 @@ nfi.desk.format_age = (datetime) => {
 
 nfi.desk.format_case = (row) => {
 	const escape = frappe.utils.escape_html;
-	const reference = [row.case_number || __("Not submitted"), row.mother_name].filter(Boolean);
 	return `<div class="min-w-0">
-		<div class="truncate text-base-medium text-ink-gray-8">${escape(row.baby_name || row.name)}</div>
-		<div class="truncate text-sm text-ink-gray-5 mt-1">${escape(reference.join(" · "))}</div>
+		<div class="truncate text-base-medium text-ink-gray-8">${escape(row.title || row.name)}</div>
+		<div class="truncate text-sm text-ink-gray-5 mt-1">${escape(row.mother_name || "")}</div>
 	</div>`;
 };
 
