@@ -181,12 +181,14 @@ def after_install():
 	add_workflow()
 	add_programs()
 	add_print_format_permission()
+	set_default_currency()
 
 
 def after_migrate():
 	add_roles()
 	add_workflow()
 	add_print_format_permission()
+	set_default_currency()
 
 
 def add_roles():
@@ -200,6 +202,12 @@ def add_print_format_permission():
 	for role_name in ROLES:
 		if not frappe.db.exists("Custom DocPerm", {"parent": "Print Format", "role": role_name}):
 			add_permission("Print Format", role_name)
+
+
+def set_default_currency():
+	if not frappe.db.get_default("currency"):
+		frappe.db.set_single_value("System Settings", "currency", "INR")
+		frappe.db.set_default("currency", "INR")
 
 
 def add_workflow():
