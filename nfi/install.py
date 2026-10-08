@@ -1,4 +1,5 @@
 import frappe
+from frappe.permissions import add_permission
 
 SPOC = "NFI SPOC"
 COORDINATOR = "NFI Coordinator"
@@ -179,17 +180,26 @@ def after_install():
 	add_roles()
 	add_workflow()
 	add_programs()
+	add_print_format_permission()
 
 
 def after_migrate():
 	add_roles()
 	add_workflow()
+	add_print_format_permission()
 
 
 def add_roles():
 	for role_name in ROLES:
 		if not frappe.db.exists("Role", role_name):
 			frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert()
+
+
+def add_print_format_permission():
+	# the print view reads the chosen Print Format with frappe.client.get, which needs read, not select
+	for role_name in ROLES:
+		if not frappe.db.exists("Custom DocPerm", {"parent": "Print Format", "role": role_name}):
+			add_permission("Print Format", role_name)
 
 
 def add_workflow():
