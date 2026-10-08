@@ -57,12 +57,16 @@ NFI lets a newborn-care foundation take sponsorship requests from partner hospit
 
 ### Installation
 
-You need Frappe 17 (the develop branch).
+You need Frappe 16 or Frappe 17 (the develop branch).
 
 ```bash
 bench get-app https://github.com/Rl0007/nfi --branch develop
 bench --site your.site install-app nfi
 ```
+
+- Finish the setup wizard as Administrator before other users log in.
+- Set `host_name` so PDF printing works: `bench --site your.site set-config host_name https://your-domain`.
+- Set up an outgoing Email Account so approval and rejection emails reach the Email Queue. Without one, the email errors go to the Error Log and the case still moves on.
 
 Then add your hospitals and their contacts, and check the document checklist on each program.
 
