@@ -439,7 +439,7 @@ class NFICase(Document):
 
 
 def get_case_title(case_number: str | None, baby_name: str | None) -> str | None:
-	return " – ".join(filter(None, [case_number, baby_name])) or None  # noqa: RUF001
+	return " – ".join(part for part in (case_number, baby_name) if part) or None  # noqa: RUF001
 
 
 def get_spoc_status(state: str) -> str:
