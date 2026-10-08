@@ -15,15 +15,14 @@ use_json_request_body = True
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "nfi",
-# 		"logo": "/assets/nfi/logo.png",
-# 		"title": "NFI",
-# 		"route": "/nfi",
-# 		"has_permission": "nfi.api.permission.has_app_permission",
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "nfi",
+		"logo": "/assets/nfi/images/nfi-icon.png",
+		"title": "NFI",
+		"has_permission": "nfi.permissions.has_app_permission",
+	}
+]
 
 # The dock, the rail down the left of the desk, is a document rather than a hook. Author it in
 # Manage Dock on a developer-mode site and press Export to App, and it is written to

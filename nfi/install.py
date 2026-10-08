@@ -7,6 +7,13 @@ DIRECTOR = "NFI Director"
 ACCOUNTANT = "NFI Accountant"
 ADMIN = "NFI Admin"
 ROLES = (SPOC, COORDINATOR, DIRECTOR, ACCOUNTANT, ADMIN)
+ROLE_HOME_PAGES = {
+	SPOC: "desk/nfi-spoc",
+	COORDINATOR: "desk/nfi-coordinator",
+	DIRECTOR: "desk/nfi-director",
+	ACCOUNTANT: "desk/nfi-accountant",
+	ADMIN: "desk/nfi-management",
+}
 
 APPROVED_AWAITING_DOCUMENTS = "Approved – Awaiting Final Discharge Documents"  # noqa: RUF001
 WORKFLOW_NAME = "NFI Case Workflow"
@@ -201,6 +208,10 @@ def add_roles():
 	for role_name in ROLES:
 		if not frappe.db.exists("Role", role_name):
 			frappe.get_doc({"doctype": "Role", "role_name": role_name, "desk_access": 1}).insert()
+		role = frappe.get_doc("Role", role_name)
+		if not role.home_page:
+			role.home_page = ROLE_HOME_PAGES[role_name]
+			role.save()
 
 
 def add_print_format_permission():
