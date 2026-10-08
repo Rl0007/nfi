@@ -1,13 +1,13 @@
 {
- "charts": [
+ "charts": [],
+ "content": "[{\"id\": \"I2Y1rzw27j\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Verification\", \"col\": 4}}, {\"id\": \"kooEKqazwJ\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Coordinator Review\", \"col\": 4}}, {\"id\": \"7QFMPd3W2X\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"In Medical Review\", \"col\": 4}}, {\"id\": \"yygNdemkvd\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"In Social & Financial Review\", \"col\": 4}}, {\"id\": \"ajgwb2Mjpv\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Accountant\", \"col\": 4}}, {\"id\": \"wh09CDfgvq\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Information Needed\", \"col\": 4}}, {\"id\": \"Zkb6GjHbG8\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"NFI Cases by Stage\", \"col\": 12}}, {\"id\": \"1RqwkVHWun\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"Y90XYToGwb\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Case Desk\", \"col\": 3}}, {\"id\": \"brqQ7B697w\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}, {\"id\": \"nommM30DOX\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Case\", \"col\": 3}}, {\"id\": \"fO4WUDlWuX\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hospitals\", \"col\": 3}}]",
+ "creation": "2026-10-08 13:00:00.000000",
+ "custom_blocks": [
   {
-   "label": "Cases by Stage",
-   "chart_name": "NFI Cases by Stage"
+   "custom_block_name": "NFI Cases by Stage",
+   "label": "NFI Cases by Stage"
   }
  ],
- "content": "[{\"id\": \"I2Y1rzw27j\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Verification\", \"col\": 4}}, {\"id\": \"kooEKqazwJ\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Coordinator Review\", \"col\": 4}}, {\"id\": \"7QFMPd3W2X\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"In Medical Review\", \"col\": 4}}, {\"id\": \"yygNdemkvd\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"In Social & Financial Review\", \"col\": 4}}, {\"id\": \"ajgwb2Mjpv\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Accountant\", \"col\": 4}}, {\"id\": \"wh09CDfgvq\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Information Needed\", \"col\": 4}}, {\"id\": \"Zkb6GjHbG8\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Stage\", \"col\": 12}}, {\"id\": \"1RqwkVHWun\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"Y90XYToGwb\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Case Desk\", \"col\": 3}}, {\"id\": \"brqQ7B697w\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}, {\"id\": \"nommM30DOX\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Case\", \"col\": 3}}, {\"id\": \"fO4WUDlWuX\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hospitals\", \"col\": 3}}]",
- "creation": "2026-10-08 13:00:00.000000",
- "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "external_link": "",
@@ -21,7 +21,7 @@
  "link_to": "",
  "link_type": "",
  "links": [],
- "modified": "2026-10-08 13:00:00.000000",
+ "modified": "2026-10-08 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "NFI",
  "name": "NFI Coordinator",

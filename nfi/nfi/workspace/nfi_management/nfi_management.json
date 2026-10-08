@@ -1,16 +1,8 @@
 {
  "charts": [
   {
-   "label": "Cases by Status",
-   "chart_name": "NFI Cases by Status"
-  },
-  {
    "label": "Cases by Program",
    "chart_name": "NFI Cases by Program"
-  },
-  {
-   "label": "Cases by Hospital",
-   "chart_name": "NFI Cases by Hospital"
   },
   {
    "label": "Sponsored Amount per Month",
@@ -21,9 +13,18 @@
    "chart_name": "NFI Director Decisions"
   }
  ],
- "content": "[{\"id\": \"qiGogkdmts\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Cases\", \"col\": 4}}, {\"id\": \"VrFlvbpaTI\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Approved\", \"col\": 4}}, {\"id\": \"lD5gYAEZyF\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rejected\", \"col\": 4}}, {\"id\": \"Q8vZRNzvdi\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Sponsored\", \"col\": 4}}, {\"id\": \"eTpkf01Prp\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Paid\", \"col\": 4}}, {\"id\": \"sCjBq78Hp7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Verification\", \"col\": 4}}, {\"id\": \"twaxDFmFaq\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Status\", \"col\": 12}}, {\"id\": \"fycbsoKGUO\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Program\", \"col\": 12}}, {\"id\": \"S2yu9jSNcZ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Hospital\", \"col\": 12}}, {\"id\": \"3MTYiGFZXZ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Sponsored Amount per Month\", \"col\": 12}}, {\"id\": \"K3QQobiwgZ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Director Decisions\", \"col\": 12}}, {\"id\": \"IMMQEaXUFH\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"OeTpeqTmT8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Case Desk\", \"col\": 3}}, {\"id\": \"ExDQVMNejp\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payments\", \"col\": 3}}, {\"id\": \"UsJadqPQPs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}, {\"id\": \"GCCh3m86bC\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hospitals\", \"col\": 3}}, {\"id\": \"Y8Bqn6nKiG\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Programs\", \"col\": 3}}]",
+ "content": "[{\"id\": \"qiGogkdmts\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Cases\", \"col\": 4}}, {\"id\": \"VrFlvbpaTI\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Approved\", \"col\": 4}}, {\"id\": \"lD5gYAEZyF\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rejected\", \"col\": 4}}, {\"id\": \"Q8vZRNzvdi\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Sponsored\", \"col\": 4}}, {\"id\": \"eTpkf01Prp\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Paid\", \"col\": 4}}, {\"id\": \"sCjBq78Hp7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting Verification\", \"col\": 4}}, {\"id\": \"twaxDFmFaq\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"NFI Cases by Status\", \"col\": 12}}, {\"id\": \"fycbsoKGUO\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cases by Program\", \"col\": 12}}, {\"id\": \"S2yu9jSNcZ\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"NFI Cases by Hospital\", \"col\": 12}}, {\"id\": \"3MTYiGFZXZ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Sponsored Amount per Month\", \"col\": 12}}, {\"id\": \"K3QQobiwgZ\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Director Decisions\", \"col\": 12}}, {\"id\": \"IMMQEaXUFH\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"OeTpeqTmT8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Case Desk\", \"col\": 3}}, {\"id\": \"ExDQVMNejp\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payments\", \"col\": 3}}, {\"id\": \"UsJadqPQPs\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cases\", \"col\": 3}}, {\"id\": \"GCCh3m86bC\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Hospitals\", \"col\": 3}}, {\"id\": \"Y8Bqn6nKiG\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Programs\", \"col\": 3}}]",
  "creation": "2026-10-08 13:00:00.000000",
- "custom_blocks": [],
+ "custom_blocks": [
+  {
+   "custom_block_name": "NFI Cases by Status",
+   "label": "NFI Cases by Status"
+  },
+  {
+   "custom_block_name": "NFI Cases by Hospital",
+   "label": "NFI Cases by Hospital"
+  }
+ ],
  "docstatus": 0,
  "doctype": "Workspace",
  "external_link": "",
@@ -37,7 +38,7 @@
  "link_to": "",
  "link_type": "",
  "links": [],
- "modified": "2026-10-08 17:00:00.000000",
+ "modified": "2026-10-08 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "NFI",
  "name": "NFI Management",
