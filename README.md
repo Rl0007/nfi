@@ -65,7 +65,7 @@ bench --site your.site install-app nfi
 ```
 
 - Finish the setup wizard as Administrator before other users log in.
-- Set `host_name` so PDF printing works: `bench --site your.site set-config host_name https://your-domain`.
+- Set `host_name` so PDF printing works: `bench --site your.site set-config host_name https://your-domain:443`, then restart the web server. Without the port, Frappe adds `:8000` and PDFs fail with a connection error.
 - Set up an outgoing Email Account so approval and rejection emails reach the Email Queue. Without one, the email errors go to the Error Log and the case still moves on.
 
 Then add your hospitals and their contacts, and check the document checklist on each program.

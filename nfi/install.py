@@ -18,6 +18,11 @@ ROLE_HOME_PAGES = {
 APPROVED_AWAITING_DOCUMENTS = "Approved – Awaiting Final Discharge Documents"  # noqa: RUF001
 WORKFLOW_NAME = "NFI Case Workflow"
 INDIAN_NUMBER_FORMAT = "#,##,###.##"
+BAR_LIST_CHARTS = {
+	"NFI Cases by Status": "Cases by Status",
+	"NFI Cases by Stage": "Cases by Stage",
+	"NFI Cases by Hospital": "Cases by Hospital",
+}
 
 STATE_EDITORS = {
 	"Draft": [SPOC, COORDINATOR],
@@ -197,6 +202,7 @@ def after_install():
 	add_print_format_permission()
 	set_default_currency()
 	set_indian_number_format()
+	add_bar_lists()
 
 
 def after_migrate():
@@ -204,6 +210,25 @@ def after_migrate():
 	add_workflow()
 	add_print_format_permission()
 	set_default_currency()
+	add_bar_lists()
+
+
+def add_bar_lists():
+	script = frappe.read_file(frappe.get_app_path("nfi", "templates", "custom_blocks", "bar_list.js"))
+	style = frappe.read_file(frappe.get_app_path("nfi", "templates", "custom_blocks", "bar_list.css"))
+	for chart_name, title in BAR_LIST_CHARTS.items():
+		if frappe.db.exists("Custom HTML Block", chart_name):
+			block = frappe.get_doc("Custom HTML Block", chart_name)
+		else:
+			block = frappe.new_doc("Custom HTML Block")
+			block.name = chart_name
+		block.html = (
+			f'<div class="bar-list" data-chart="{chart_name}" data-title="{title}">'
+			'<div class="bar-list-title"></div><div class="bar-list-rows"></div></div>'
+		)
+		block.script = script
+		block.style = style
+		block.save(ignore_permissions=True)
 
 
 def add_roles():
