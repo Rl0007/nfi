@@ -57,7 +57,7 @@ NFI lets a newborn-care foundation take sponsorship requests from partner hospit
 
 ### Installation
 
-You need Frappe 16 or Frappe 17 (the develop branch).
+You need Frappe 16.50 or later, or Frappe 17 (the develop branch).
 
 ```bash
 bench get-app https://github.com/Rl0007/nfi --branch develop
