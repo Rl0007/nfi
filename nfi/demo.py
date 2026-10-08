@@ -129,9 +129,9 @@ SPECS = [
 	("BCRP", "KAV", "In-born", "Male", 19, ("submit", "verify", "medical"), None),
 	("BRP", "NAN", "In-born", "Female", 27, ("to_director", "director_reject"), None),
 	("BCRP", "HOY", "Out-born", "Male", 24, ("submit", "verify", "medical_reject"), None),
-	("BRP", "SAN", "In-born", "Male", 33, ("to_director", *APPROVE), None),
-	("SRT", "NAN", "In-born", "Female", 38, ("to_director", *APPROVE), None),
-	("BARP", "TUN", "In-born", "Male", 30, ("to_director", *APPROVE), None),
+	("BRP", "SAN", "In-born", "Male", 33, ("to_director", *APPROVE, "upload_discharge"), None),
+	("SRT", "NAN", "In-born", "Female", 38, ("to_director", *APPROVE, "upload_discharge"), None),
+	("BARP", "TUN", "In-born", "Male", 30, ("to_director", *APPROVE, "upload_discharge"), None),
 	("TBC", "KAV", "Out-born", "Female", 44, ("to_director", *DISCHARGE), None),
 	("BRP", "TUN", "In-born", "Male", 49, ("to_director", *DISCHARGE, "accountant_return"), None),
 	("BCRP", "SAN", "In-born", "Female", 41, ("to_director", *DISCHARGE), None),
@@ -347,6 +347,8 @@ class DemoCase:
 			"NFI Case", {"mother_mobile": mother_mobile, "case_type": self.case_type}
 		)
 		if self.name:
+			if "upload_discharge" in self.steps:
+				self.upload_discharge()
 			return self.name
 		self.add_case(mother_mobile)
 		for step in self.steps:
@@ -596,8 +598,11 @@ class DemoCase:
 		reason = "Baby already discharged before application; NFI supports only ongoing NICU admissions."
 		self.update(COORDINATOR_USER, {"rejection_reason": reason}, "Reject")
 
-	def discharge(self):
+	def upload_discharge(self):
 		self.update(self.spoc, lambda case: self.upload_documents(case, "Discharge"))
+
+	def discharge(self):
+		self.upload_discharge()
 		discharged_on = getdate(self.clock - timedelta(days=2))
 		self.update(
 			COORDINATOR_USER,
