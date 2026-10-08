@@ -17,6 +17,7 @@ ROLE_HOME_PAGES = {
 
 APPROVED_AWAITING_DOCUMENTS = "Approved – Awaiting Final Discharge Documents"  # noqa: RUF001
 WORKFLOW_NAME = "NFI Case Workflow"
+INDIAN_NUMBER_FORMAT = "#,##,###.##"
 
 STATE_EDITORS = {
 	"Draft": [SPOC, COORDINATOR],
@@ -195,6 +196,7 @@ def after_install():
 	add_programs()
 	add_print_format_permission()
 	set_default_currency()
+	set_indian_number_format()
 
 
 def after_migrate():
@@ -225,6 +227,16 @@ def set_default_currency():
 	if not frappe.db.get_default("currency"):
 		frappe.db.set_single_value("System Settings", "currency", "INR")
 		frappe.db.set_default("currency", "INR")
+
+
+def set_indian_number_format():
+	stock_formats = (None, "", "#,###.##")
+	if (
+		frappe.db.get_default("currency") == "INR"
+		and frappe.db.get_single_value("System Settings", "number_format") in stock_formats
+	):
+		frappe.db.set_single_value("System Settings", "number_format", INDIAN_NUMBER_FORMAT)
+		frappe.db.set_default("number_format", INDIAN_NUMBER_FORMAT)
 
 
 def add_workflow():
